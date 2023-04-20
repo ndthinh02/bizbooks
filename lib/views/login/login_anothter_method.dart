@@ -3,6 +3,7 @@ import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
 import 'package:ui_flutter/views/login/login.dart';
+import 'package:ui_flutter/views/register/register.dart';
 
 class LoginAnotherMethodScreen extends StatelessWidget {
   const LoginAnotherMethodScreen({super.key});
@@ -33,8 +34,8 @@ class LoginAnotherMethodScreen extends StatelessWidget {
               const SizedBox(
                 height: 100,
               ),
-              _buildButton(),
-              _buildFooter(),
+              _buildButton(context),
+              _buildFooter(context),
             ],
           ),
         ),
@@ -42,11 +43,11 @@ class LoginAnotherMethodScreen extends StatelessWidget {
     ));
   }
 
-  Widget _buildFooter() {
+  Widget _buildFooter(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 80, right: 20),
       child: Align(
-        alignment: Alignment.bottomRight,
+        alignment: Alignment.bottomCenter,
         child: Column(
           children: [
             Text(
@@ -56,15 +57,22 @@ class LoginAnotherMethodScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            RichText(
-                text: TextSpan(
-                    text: "Đăng ký",
-                    style: CustomText.subText(13, colorTextRegister),
-                    children: [
-                  TextSpan(
-                      text: " tài khoản Bizbooks",
-                      style: CustomText.subText(13, Colors.white))
-                ]))
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const RegisterScreen(),
+                ));
+              },
+              child: RichText(
+                  text: TextSpan(
+                      text: "Đăng ký",
+                      style: CustomText.subText(13, colorTextRegister),
+                      children: [
+                    TextSpan(
+                        text: " tài khoản Bizbooks",
+                        style: CustomText.subText(13, Colors.white))
+                  ])),
+            )
           ],
         ),
       ),
@@ -100,7 +108,7 @@ class LoginAnotherMethodScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildButton() {
+  Widget _buildButton(BuildContext context) {
     return Column(
       children: [
         CustomButton(
@@ -141,7 +149,10 @@ class LoginAnotherMethodScreen extends StatelessWidget {
                   backgroundColor: colorButton,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LoginScreen()));
+              },
               child: Text(
                 "Đăng nhập với Bizbooks",
                 textAlign: TextAlign.center,

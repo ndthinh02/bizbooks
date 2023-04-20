@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ui_flutter/models/category.dart';
+import 'package:ui_flutter/views/choose_category/choose_category_provider.dart';
 import 'package:ui_flutter/views/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: ((context) => ChooseCategoryProvider()),
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => Category(name: '', svgPicture: '')),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,6 +30,8 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen());
   }
 }
+
+final formKeyLogin = GlobalKey<FormState>();
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

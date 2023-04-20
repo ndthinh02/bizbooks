@@ -22,40 +22,39 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: 303,
-        height: 56,
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: colorButton,
-                shape: RoundedRectangleBorder(borderRadius: radius)),
-            onPressed: () {
-              function;
-            },
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 12,
-                ),
-                SvgPicture.asset(
-                  assetImage!,
-                  width: 24,
-                  height: 24,
-                ),
-                const SizedBox(
-                  width: 24,
-                ),
-                InkWell(
-                  child: Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: CustomText.title(sizeText, colorText),
+    return Container(
+      margin: const EdgeInsets.only(top: 30),
+      child: Center(
+        child: SizedBox(
+          width: 303,
+          height: 56,
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: colorButton,
+                  shape: RoundedRectangleBorder(borderRadius: radius)),
+              onPressed: () {
+                function();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    assetImage!,
+                    width: 24,
+                    height: 24,
                   ),
-                ),
-              ],
-            )),
+                  const SizedBox(
+                    width: 24,
+                  ),
+                  InkWell(
+                    child: Text(
+                      title,
+                      style: CustomText.title(sizeText, colorText),
+                    ),
+                  ),
+                ],
+              )),
+        ),
       ),
     );
   }

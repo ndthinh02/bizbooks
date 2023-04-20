@@ -5,28 +5,39 @@ import 'package:ui_flutter/ui/custom_text.dart';
 class CustomTextFiled extends StatelessWidget {
   final TextEditingController textEditingController;
   final String hintText;
-  final String assetImage;
+  final bool showPass;
+  final String textValidate;
 
   const CustomTextFiled(
       {super.key,
       required this.hintText,
-      required this.assetImage,
-      required this.textEditingController});
+      required this.textEditingController,
+      required this.showPass,
+      required this.textValidate});
 
   @override
   Widget build(BuildContext context) {
     var outlineInputBorder = OutlineInputBorder(
-      borderSide: BorderSide.none,
+      borderSide: const BorderSide(color: Colors.red),
       borderRadius: BorderRadius.circular(16),
     );
-    return Padding(
-      padding: const EdgeInsets.all(14.0),
+
+    return Container(
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
       child: Column(
         children: [
           const SizedBox(
             height: 20,
           ),
-          TextField(
+          TextFormField(
+            controller: textEditingController,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return value = textValidate;
+              }
+              return null;
+            },
+            obscureText: showPass,
             decoration: InputDecoration(
                 filled: true,
                 fillColor: colorBackgroundTextFiled,

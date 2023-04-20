@@ -10,6 +10,6 @@ class CustomText {
         fontFamily: 'SVNGilroy-Light',
         fontSize: size,
         color: color,
-        fontWeight: FontWeight.w400);
+        fontWeight: FontWeight.w500);
   }
 }
