@@ -18,7 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool onToogle = false;
-  bool isShowPassword = false;
+  bool isShowPassword = true;
   String assetImage = '';
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -143,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 14,
             ),
             CustomButton(
+                colorBorderSide: colorButton,
                 function: () {
                   if (keyLogin.currentState!.validate()) {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(

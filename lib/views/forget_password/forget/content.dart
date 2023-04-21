@@ -104,6 +104,7 @@ class _ContentState extends State<Content> {
             height: 14,
           ),
           CustomButton(
+              colorBorderSide: colorButton,
               assetImage: '',
               function: () {
                 if (keyForgetPassword.currentState!.validate()) {

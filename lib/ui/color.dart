@@ -2,6 +2,8 @@ import 'package:flutter/animation.dart';
 
 const colorButton = Color(0xFF3D40C6);
 const colorTextRegister = Color(0xFF00C7FF);
+const colorSuccess = Color(0xFFE5FFF2);
+const colorSuccessDark = Color(0xFF00994D);
 const colorLight = Color(0xFFEEE5FE);
 const colorBackgroundTextFiled = Color(0xFFEFF0F6);
 const colorBeginGradient = Color.fromRGBO(5, 5, 5, 0);

@@ -6,6 +6,7 @@ class CustomButton extends StatelessWidget {
   final Function function;
   final String title;
   final Color colorButton;
+  final Color colorBorderSide;
   final BorderRadius radius;
   final double sizeText;
   final Color colorText;
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
       required this.radius,
       required this.sizeText,
       required this.colorText,
+      required this.colorBorderSide,
       this.assetImage});
 
   @override
@@ -30,6 +32,7 @@ class CustomButton extends StatelessWidget {
           height: 56,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
+                  side: BorderSide(width: 1, color: colorBorderSide),
                   backgroundColor: colorButton,
                   shape: RoundedRectangleBorder(borderRadius: radius)),
               onPressed: () {

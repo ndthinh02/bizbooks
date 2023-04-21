@@ -137,6 +137,7 @@ class _LoginScreenState extends State<RegisterScreen> {
             height: 10,
           ),
           CustomButton(
+              colorBorderSide: colorButton,
               function: () {
                 if (keyRegister.currentState!.validate()) {
                   CustomBottomSheet.showBottom(context, "Tạo tài khoản",

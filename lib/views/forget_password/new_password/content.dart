@@ -99,6 +99,7 @@ class _ContentState extends State<Content> {
               ],
             ),
             CustomButton(
+                colorBorderSide: colorButton,
                 assetImage: '',
                 function: () {
                   if (keyNewpassword.currentState!.validate()) {

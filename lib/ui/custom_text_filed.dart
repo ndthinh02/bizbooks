@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
 
@@ -47,6 +48,27 @@ class CustomTextFiled extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class CustomSearch {
+  static TextField customSearch(String title) {
+    return TextField(
+      decoration: InputDecoration(
+          prefixIcon: SvgPicture.asset(
+            "images/icon_search.svg",
+            width: 12,
+            height: 12,
+            fit: BoxFit.scaleDown,
+          ),
+          filled: true,
+          fillColor: colorBackgroundTextFiled,
+          hintText: title,
+          hintStyle: CustomText.subText(17, Colors.black),
+          border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(8))),
     );
   }
 }

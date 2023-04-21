@@ -10,6 +10,14 @@ class CustomText {
         fontFamily: 'SVNGilroy-Light',
         fontSize: size,
         color: color,
-        fontWeight: FontWeight.w500);
+        fontWeight: FontWeight.w700);
+  }
+
+  static TextStyle subTextLigth(double size, Color color) {
+    return TextStyle(
+        fontFamily: 'SVNGilroy-Light',
+        fontSize: size,
+        color: color,
+        fontWeight: FontWeight.w400);
   }
 }

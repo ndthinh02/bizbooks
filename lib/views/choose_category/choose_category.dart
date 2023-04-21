@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
+import 'package:ui_flutter/views/bottom/my_home_page.dart';
 import 'package:ui_flutter/views/choose_category/choose_category_provider.dart';
 
 import '../../ui/color.dart';
@@ -17,6 +18,8 @@ class ChooseCategory extends StatefulWidget {
 class _ChooseCategoryState extends State<ChooseCategory> {
   ChooseCategoryProvider get categoryChoose =>
       context.watch<ChooseCategoryProvider>();
+  ChooseCategoryProvider get readCategoryChoose =>
+      context.read<ChooseCategoryProvider>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,10 +83,12 @@ class _ChooseCategoryState extends State<ChooseCategory> {
                 height: 20,
               ),
               CustomButton(
+                  colorBorderSide: colorButton,
                   assetImage: '',
                   function: () {
-                    if (categoryChoose.mlistChoseCategory.length >= 2) {
-                      // Navigator.of(context).push(route);
+                    if (readCategoryChoose.mlistChoseCategory.length >= 2) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const MyHomePage()));
                     }
                   },
                   title: "Tiếp tục            ",

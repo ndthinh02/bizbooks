@@ -60,6 +60,7 @@ class CustomBottomSheet {
                     height: 40,
                   ),
                   CustomButton(
+                    colorBorderSide: colorButton,
                     function: () => Navigator.of(context).pop(),
                     title: 'Xác nhận                 ',
                     colorButton: colorButton,

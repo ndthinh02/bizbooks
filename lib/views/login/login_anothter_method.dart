@@ -112,6 +112,7 @@ class LoginAnotherMethodScreen extends StatelessWidget {
     return Column(
       children: [
         CustomButton(
+          colorBorderSide: colorButton,
           function: () {},
           title: "Đăng nhập bằng facebook",
           colorButton: colorButton,
@@ -121,6 +122,7 @@ class LoginAnotherMethodScreen extends StatelessWidget {
           assetImage: 'images/fb.svg',
         ),
         CustomButton(
+          colorBorderSide: Colors.white,
           function: () {},
           title: "Đăng nhập bằng google",
           colorButton: Colors.white,
@@ -137,6 +139,7 @@ class LoginAnotherMethodScreen extends StatelessWidget {
           sizeText: 15,
           colorText: Colors.black,
           assetImage: 'images/apple.svg',
+          colorBorderSide: Colors.white,
         ),
         const SizedBox(
           height: 70,
