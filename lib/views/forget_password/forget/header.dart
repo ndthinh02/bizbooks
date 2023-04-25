@@ -31,7 +31,7 @@ class Header extends StatelessWidget {
         ),
         Text(
           subTitle,
-          style: CustomText.subText(15, Colors.white),
+          style: CustomText.subText(16, Colors.white),
         ),
       ],
     );

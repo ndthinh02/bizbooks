@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
-import 'package:ui_flutter/ui/custom_text_filed.dart';
 import 'package:ui_flutter/utils/key.dart';
 
 import '../../../ui/color.dart';
@@ -36,13 +35,36 @@ class _ContentState extends State<Content> {
             Row(
               children: [
                 Expanded(
-                  child: CustomTextFiled(
-                    showPass: isShowPassword,
-                    hintText: "Mật khẩu",
-                    textEditingController: newPasswordController,
-                    textValidate: 'Mật khẩu không được trống',
+                    child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                  child: TextFormField(
+                    style: CustomText.subText(16, colorLabalTextFiled),
+                    onChanged: (v) {
+                      if (keyNewpassword.currentState!.validate()) {}
+                    },
+                    controller: newPasswordController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return value = '*Mật khẩu không được trống';
+                      }
+                      if (value.length < 6) {
+                        return value = "*Mật khẩu phải lớn hơn 6 kí tự";
+                      }
+                      // if (value != newPasswordController.text) {
+                      //   return value = "Mật khẩu không trùng khớp";
+                      // }
+                      return null;
+                    },
+                    obscureText: isShowPassword,
+                    decoration: InputDecoration(
+                        errorStyle: CustomText.subText(13, colorTextError),
+                        filled: true,
+                        fillColor: colorBackgroundTextFiled,
+                        hintText: 'Mật khẩu',
+                        hintStyle: CustomText.subText(15, colorLabalTextFiled),
+                        border: outlineInputBorder),
                   ),
-                ),
+                )),
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -64,6 +86,10 @@ class _ContentState extends State<Content> {
                     child: Container(
                   margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
                   child: TextFormField(
+                    style: CustomText.subText(16, colorLabalTextFiled),
+                    onChanged: (v) {
+                      if (keyNewpassword.currentState!.validate()) {}
+                    },
                     controller: newPasswordControllerAgain,
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -76,10 +102,11 @@ class _ContentState extends State<Content> {
                     },
                     obscureText: isShowPasswordAgain,
                     decoration: InputDecoration(
+                        errorStyle: CustomText.subText(13, colorTextError),
                         filled: true,
                         fillColor: colorBackgroundTextFiled,
                         hintText: 'Nhập lại mật khẩu',
-                        hintStyle: CustomText.title(15, Colors.grey),
+                        hintStyle: CustomText.subText(15, colorLabalTextFiled),
                         border: outlineInputBorder),
                   ),
                 )),
@@ -98,6 +125,9 @@ class _ContentState extends State<Content> {
                 )
               ],
             ),
+            const SizedBox(
+              height: 20,
+            ),
             CustomButton(
               colorBorderSide: colorButton,
               function: () {
@@ -112,10 +142,13 @@ class _ContentState extends State<Content> {
               },
               title: "Tạo mật khẩu mới",
               colorButton: colorButton,
-              radius: BorderRadius.circular(40),
+              radius: 40,
               sizeText: 15,
               colorText: Colors.white,
-              icon: '',
+              icon: const SizedBox(),
+              marginHorizontal: 20,
+              marginVertical: 8,
+              isCheckHaveIcon: false,
             )
           ],
         ),

@@ -54,29 +54,43 @@ class _LoginScreenState extends State<RegisterScreen> {
     return Container(
       margin: const EdgeInsets.only(right: 20),
       width: 355,
-      height: 580,
+      height: 522,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(24)),
       child: Column(
         children: [
-          const SizedBox(
-            height: 10,
-          ),
           Form(
               key: keyRegister,
               child: Column(
                 children: [
-                  CustomTextFiled(
-                    hintText: "Email của bạn",
-                    textEditingController: emailController,
-                    showPass: false,
-                    textValidate: 'Email không chính xác',
+                  const SizedBox(
+                    height: 26,
+                  ),
+                  Wrap(
+                    children: [
+                      CustomTextFiled(
+                        hintText: "Email của bạn",
+                        textEditingController: emailController,
+                        showPass: false,
+                        textValidate: '*Email không chính xác',
+                        isCheckEmail: true,
+                        isCheckPassword: true,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 14,
                   ),
                   CustomTextFiled(
                     hintText: "Họ và tên",
                     textEditingController: fullnameController,
                     showPass: false,
-                    textValidate: 'Họ tên không đươc trống',
+                    textValidate: '*Họ tên không đươc trống',
+                    isCheckEmail: false,
+                    isCheckPassword: true,
+                  ),
+                  const SizedBox(
+                    height: 14,
                   ),
                   Row(
                     children: [
@@ -85,7 +99,9 @@ class _LoginScreenState extends State<RegisterScreen> {
                           showPass: isShowPassword,
                           hintText: "Mật khẩu",
                           textEditingController: passwordController,
-                          textValidate: 'Mật khẩu không được trống',
+                          textValidate: '*Mật khẩu không được trống',
+                          isCheckEmail: false,
+                          isCheckPassword: true,
                         ),
                       ),
                       GestureDetector(
@@ -111,7 +127,9 @@ class _LoginScreenState extends State<RegisterScreen> {
                           showPass: isShowPasswordAgain,
                           hintText: "Nhập lại mật khẩu",
                           textEditingController: repasswordController,
-                          textValidate: 'Mật khẩu không được trống !',
+                          textValidate: '*Mật khẩu không được trống !',
+                          isCheckEmail: false,
+                          isCheckPassword: true,
                         ),
                       ),
                       GestureDetector(
@@ -132,9 +150,7 @@ class _LoginScreenState extends State<RegisterScreen> {
                   ),
                 ],
               )),
-          const SizedBox(
-            height: 10,
-          ),
+          const Spacer(),
           CustomButton(
             colorBorderSide: colorButton,
             function: () {
@@ -145,10 +161,13 @@ class _LoginScreenState extends State<RegisterScreen> {
             },
             title: 'Tạo tài khoản',
             colorButton: colorButton,
-            radius: BorderRadius.circular(40),
+            radius: 40,
             sizeText: 16,
             colorText: Colors.white,
-            icon: '',
+            icon: const SizedBox(),
+            marginHorizontal: 20,
+            marginVertical: 8,
+            isCheckHaveIcon: false,
           ),
           const SizedBox(
             height: 10,
@@ -158,15 +177,18 @@ class _LoginScreenState extends State<RegisterScreen> {
             child: RichText(
                 text: TextSpan(
                     text: "Đã có tài khoản ?",
-                    style: CustomText.subText(
+                    style: CustomText.title(
                       13,
                       Colors.black,
                     ),
                     children: [
                   TextSpan(
                       text: " Đăng nhập ",
-                      style: CustomText.subText(13, colorTextRegister))
+                      style: CustomText.title(13, colorTextRegister))
                 ])),
+          ),
+          const SizedBox(
+            height: 40,
           ),
         ],
       ),

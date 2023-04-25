@@ -54,7 +54,7 @@ class CustomBottomSheet {
                   ),
                   Text(
                     "thinhpro123",
-                    style: CustomText.subText(17, Colors.black),
+                    style: CustomText.subText(17, colorButton),
                   ),
                   const SizedBox(
                     height: 40,
@@ -64,10 +64,13 @@ class CustomBottomSheet {
                     function: () => Navigator.of(context).pop(),
                     title: 'Xác nhận',
                     colorButton: colorButton,
-                    radius: BorderRadius.circular(40),
+                    radius: 40,
                     sizeText: 17,
                     colorText: Colors.white,
-                    icon: '',
+                    icon: const SizedBox(),
+                    marginHorizontal: 50,
+                    marginVertical: 8,
+                    isCheckHaveIcon: false,
                   )
                 ],
               ));

@@ -30,6 +30,10 @@ class _ContentState extends State<Content> {
               child: Column(
                 children: [
                   TextFormField(
+                    style: CustomText.subText(16, colorLabalTextFiled),
+                    onChanged: (value) {
+                      if (keyForgetPassword.currentState!.validate()) {}
+                    },
                     controller: emailController,
                     validator: (value) {
                       if (value!.isEmpty ||
@@ -40,6 +44,7 @@ class _ContentState extends State<Content> {
                       return null;
                     },
                     decoration: InputDecoration(
+                        errorStyle: CustomText.subText(13, colorTextError),
                         fillColor: colorBackgroundTextFiled,
                         filled: true,
                         border: OutlineInputBorder(
@@ -57,6 +62,8 @@ class _ContentState extends State<Content> {
                         children: [
                           Expanded(
                             child: TextFormField(
+                              style:
+                                  CustomText.subText(16, colorLabalTextFiled),
                               maxLength: 6,
                               onChanged: (value) {
                                 if (value.isEmpty) {
@@ -68,17 +75,24 @@ class _ContentState extends State<Content> {
                                     isCheckCodeHave = true;
                                   });
                                 }
+                                if (keyForgetPassword.currentState!
+                                    .validate()) {}
                               },
                               keyboardType: TextInputType.number,
                               controller: codeController,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return value = "Code không hợp lệ !";
+                                  return value = "Mã không được để trống";
+                                }
+                                if (value.length < 6) {
+                                  return value = "Mã không hợp lệ !";
                                 }
 
                                 return null;
                               },
                               decoration: InputDecoration(
+                                  errorStyle:
+                                      CustomText.subText(13, colorTextError),
                                   fillColor: colorBackgroundTextFiled,
                                   filled: true,
                                   border: OutlineInputBorder(
@@ -94,7 +108,7 @@ class _ContentState extends State<Content> {
                               onPressed: () {},
                               child: Text(
                                 "Gửi lại",
-                                style: CustomText.subText(15, Colors.white),
+                                style: CustomText.textMedium(15, Colors.white),
                               ))
                         ],
                       )),
@@ -104,7 +118,7 @@ class _ContentState extends State<Content> {
             height: 14,
           ),
           CustomButton(
-            colorBorderSide: colorButton,
+            colorBorderSide: isCheckCodeHave ? colorButton : Colors.grey,
             function: () {
               if (keyForgetPassword.currentState!.validate()) {
                 setState(() {
@@ -126,10 +140,13 @@ class _ContentState extends State<Content> {
             },
             title: "TIẾP TỤC",
             colorButton: isCheckCodeHave ? colorButton : Colors.grey,
-            radius: BorderRadius.circular(40),
+            radius: 40,
             sizeText: 15,
             colorText: Colors.white,
-            icon: '',
+            icon: const SizedBox(),
+            marginHorizontal: 10,
+            marginVertical: 8,
+            isCheckHaveIcon: false,
           )
         ],
       ),

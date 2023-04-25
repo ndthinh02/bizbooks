@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/models/books.dart';
@@ -6,20 +7,21 @@ import 'package:ui_flutter/views/choose_category/choose_category_provider.dart';
 import 'package:ui_flutter/views/splash_screen.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: ((context) => ChooseCategoryProvider()),
-      ),
-      ChangeNotifierProvider(
-        create: ((context) => BookProvider()),
-      ),
-      ChangeNotifierProvider(
-        create: ((context) => Category(name: '', svgPicture: '')),
-      ),
-    ],
-    child: const MyApp(),
-  ));
+  runApp(DevicePreview(
+      builder: (context) => MultiProvider(
+            providers: [
+              ChangeNotifierProvider(
+                create: ((context) => ChooseCategoryProvider()),
+              ),
+              ChangeNotifierProvider(
+                create: ((context) => BookProvider()),
+              ),
+              ChangeNotifierProvider(
+                create: ((context) => Category(name: '', svgPicture: '')),
+              ),
+            ],
+            child: const MyApp(),
+          )));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    // ]);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

@@ -35,7 +35,8 @@ class _ForgetPasswordScreenState extends State<NewPasswordScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Header(
-                          subTitle: 'Nhập mật khẩu khác với mật khẩu trước đây',
+                          subTitle:
+                              'Nhập mật khẩu khác với mật khẩu trước đây của bạn',
                           title: 'Mật khẩu mới',
                         ),
                         SizedBox(

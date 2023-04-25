@@ -97,10 +97,13 @@ class _ChooseCategoryState extends State<ChooseCategory> {
                 colorButton: categoryChoose.mlistChoseCategory.length >= 2
                     ? colorButton
                     : Colors.grey,
-                radius: BorderRadius.circular(40),
+                radius: 40,
                 sizeText: 20,
                 colorText: Colors.white,
-                icon: '',
+                icon: const SizedBox(),
+                marginHorizontal: 50,
+                marginVertical: 8,
+                isCheckHaveIcon: false,
               )
             ],
           ),

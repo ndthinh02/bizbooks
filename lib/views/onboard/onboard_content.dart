@@ -38,7 +38,7 @@ class OnBoardContent extends StatelessWidget {
               const Spacer(),
               Text(title,
                   textAlign: TextAlign.center,
-                  style: CustomText.title(30, Colors.white)),
+                  style: CustomText.title(28, Colors.white)),
               const SizedBox(
                 height: 40,
               ),
@@ -78,7 +78,7 @@ class OnBoardContent extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 100),
                 child: Text(
                   "Bỏ qua bước này",
-                  style: CustomText.title(15, Colors.white),
+                  style: CustomText.textMedium(15, Colors.white),
                 ),
               ),
             ],

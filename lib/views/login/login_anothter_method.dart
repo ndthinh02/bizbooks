@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
@@ -33,10 +34,10 @@ class LoginAnotherMethodScreen extends StatelessWidget {
                       right: 20, left: 20, bottom: 20, top: 60),
                   child: _buildHeader(context)),
               const SizedBox(
-                height: 200,
+                height: 130,
               ),
               _buildButton(context),
-              _buildFooter(context),
+              Expanded(child: _buildFooter(context)),
             ],
           ),
         ),
@@ -47,18 +48,17 @@ class LoginAnotherMethodScreen extends StatelessWidget {
   Widget _buildFooter(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 50, right: 20, top: 40),
-      child: Align(
-        alignment: Alignment.bottomCenter,
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "Chưa có tài khoản ?",
-              style: CustomText.subText(13, Colors.white),
+              style: CustomText.title(13, Colors.white),
             ),
             const SizedBox(
-              height: 10,
+              height: 4,
             ),
             GestureDetector(
               onTap: () {
@@ -69,11 +69,11 @@ class LoginAnotherMethodScreen extends StatelessWidget {
               child: RichText(
                   text: TextSpan(
                       text: "Đăng ký",
-                      style: CustomText.subText(13, colorTextRegister),
+                      style: CustomText.title(13, colorTextRegister),
                       children: [
                     TextSpan(
                         text: " tài khoản Bizbooks",
-                        style: CustomText.subText(13, Colors.white))
+                        style: CustomText.title(13, Colors.white))
                   ])),
             )
           ],
@@ -120,35 +120,46 @@ class LoginAnotherMethodScreen extends StatelessWidget {
           function: () {},
           title: "Đăng nhập bằng Facebook",
           colorButton: colorFacebook,
-          radius: BorderRadius.circular(40),
+          radius: 30,
           sizeText: 15,
           colorText: Colors.white,
-          icon: 'images/fb.svg',
+          icon: SvgPicture.asset("images/fb.svg"),
+          marginHorizontal: 40,
+          marginVertical: 8,
+          isCheckHaveIcon: true,
         ),
         CustomButton(
           colorBorderSide: Colors.white,
           function: () {},
           title: "Đăng nhập bằng Gmail",
           colorButton: Colors.white,
-          radius: BorderRadius.circular(40),
+          radius: 30,
           sizeText: 15,
-          colorText: Colors.black,
-          icon: 'images/google.svg',
+          colorText: colorTextGmail,
+          icon: SvgPicture.asset("images/google.svg"),
+          marginHorizontal: 40,
+          marginVertical: 8,
+          isCheckHaveIcon: true,
         ),
         CustomButton(
-            function: () {},
-            title: "Đăng nhập bằng Apple",
-            colorButton: Colors.white70,
-            radius: BorderRadius.circular(40),
-            sizeText: 15,
-            colorText: Colors.black,
-            colorBorderSide: Colors.white,
-            icon: 'images/apple.svg'),
+          function: () {},
+          title: "Đăng nhập bằng Apple",
+          colorButton: Colors.white,
+          radius: 30,
+          sizeText: 15,
+          colorText: colorTextGmail,
+          colorBorderSide: Colors.white,
+          icon: SvgPicture.asset("images/apple.svg"),
+          marginHorizontal: 40,
+          marginVertical: 8,
+          isCheckHaveIcon: true,
+        ),
         const SizedBox(
           height: 70,
         ),
-        SizedBox(
-          width: 303,
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 40),
+          width: double.infinity,
           height: 56,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(

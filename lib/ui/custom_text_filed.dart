@@ -3,23 +3,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
 
+import '../utils/key.dart';
+
 class CustomTextFiled extends StatelessWidget {
   final TextEditingController textEditingController;
   final String hintText;
   final bool showPass;
   final String textValidate;
+  final bool isCheckEmail;
+  final bool isCheckPassword;
+  // final bool
 
   const CustomTextFiled(
       {super.key,
       required this.hintText,
       required this.textEditingController,
       required this.showPass,
-      required this.textValidate});
+      required this.textValidate,
+      required this.isCheckEmail,
+      required this.isCheckPassword});
 
   @override
   Widget build(BuildContext context) {
     var outlineInputBorder = OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.red),
+      borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(16),
     );
 
@@ -27,23 +34,44 @@ class CustomTextFiled extends StatelessWidget {
       margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
       child: Column(
         children: [
-          const SizedBox(
-            height: 20,
-          ),
           TextFormField(
+            style: CustomText.subText(16, colorLabalTextFiled),
             controller: textEditingController,
             validator: (value) {
-              if (value!.isEmpty) {
-                return value = textValidate;
+              if (isCheckEmail) {
+                if (value!.isEmpty ||
+                    !RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                  return value = textValidate;
+                }
+              }
+              if (isCheckPassword) {
+                if (value!.isEmpty) {
+                  return value = textValidate;
+                }
+                if (value.length < 6) {
+                  return value = "*Mật khẩu phải lớn hơn 6 kí tự";
+                }
               }
               return null;
             },
+            onChanged: (string) {
+              if (keyLogin.currentState!.validate()) {}
+              if (keyNewpassword.currentState!.validate()) {}
+            },
             obscureText: showPass,
             decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(20),
                 filled: true,
+                errorStyle: CustomText.subText(13, colorTextError),
+                errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: const BorderSide(
+                      width: 1,
+                      color: colorTextError,
+                    )),
                 fillColor: colorBackgroundTextFiled,
                 hintText: hintText,
-                hintStyle: CustomText.title(15, Colors.grey),
+                hintStyle: CustomText.subText(15, colorTextFiled),
                 border: outlineInputBorder),
           )
         ],
