@@ -19,32 +19,36 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          bottom: TabBar(
-            splashBorderRadius: BorderRadius.circular(40),
-            indicatorWeight: 4,
-            labelColor: Colors.black,
-            labelStyle: CustomText.title(24, Colors.black),
-            indicatorColor: colorButton,
-            automaticIndicatorColorAdjustment: false,
-            tabs: const [
-              Tab(
-                text: "Tất cả",
+      child: SafeArea(
+        child: Scaffold(
+          body: Column(
+            children: [
+              TabBar(
+                splashBorderRadius: BorderRadius.circular(40),
+                indicatorWeight: 4,
+                labelColor: Colors.black,
+                labelStyle: CustomText.title(24, Colors.black),
+                indicatorColor: colorButton,
+                automaticIndicatorColorAdjustment: false,
+                tabs: const [
+                  Tab(
+                    text: "Tất cả",
+                  ),
+                  Tab(
+                    text: "Thư viện",
+                  ),
+                  Tab(
+                    text: "Quà tặng",
+                  ),
+                ],
               ),
-              Tab(
-                text: "Thư viện",
-              ),
-              Tab(
-                text: "Quà tặng",
+              const Expanded(
+                child: TabBarView(
+                    children: [AllScreen(), LibraryScreen(), GiftScreen()]),
               ),
             ],
           ),
         ),
-        body: const TabBarView(
-            children: [AllScreen(), LibraryScreen(), GiftScreen()]),
       ),
     );
   }

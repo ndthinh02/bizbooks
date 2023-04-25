@@ -53,9 +53,19 @@ class CustomTextFiled extends StatelessWidget {
 }
 
 class CustomSearch {
-  static TextField customSearch(String title) {
+  static TextField customSearch(String title, bool readOnly,
+      TextEditingController textEditingController, Function function) {
     return TextField(
+      controller: textEditingController,
+      readOnly: readOnly,
+      onChanged: (value) {
+        function();
+      },
       decoration: InputDecoration(
+          suffixIcon: const Icon(
+            Icons.cancel,
+            color: Colors.grey,
+          ),
           prefixIcon: SvgPicture.asset(
             "images/icon_search.svg",
             width: 12,

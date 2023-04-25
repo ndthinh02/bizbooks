@@ -71,6 +71,7 @@ class _ChooseCategoryState extends State<ChooseCategory> {
                         return ItemCategory(
                           category: value.mList[index],
                           index: index,
+                          check: true,
                         );
                       },
                       gridDelegate:
@@ -83,21 +84,24 @@ class _ChooseCategoryState extends State<ChooseCategory> {
                 height: 20,
               ),
               CustomButton(
-                  colorBorderSide: colorButton,
-                  assetImage: '',
-                  function: () {
-                    if (readCategoryChoose.mlistChoseCategory.length >= 2) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MyHomePage()));
-                    }
-                  },
-                  title: "Tiếp tục            ",
-                  colorButton: categoryChoose.mlistChoseCategory.length >= 2
-                      ? colorButton
-                      : Colors.grey,
-                  radius: BorderRadius.circular(40),
-                  sizeText: 20,
-                  colorText: Colors.white)
+                colorBorderSide: colorButton,
+                function: () {
+                  if (readCategoryChoose.mlistChoseCategory.length >= 2) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) => const MyHomePage()),
+                    );
+                  }
+                },
+                title: "Tiếp tục ",
+                colorButton: categoryChoose.mlistChoseCategory.length >= 2
+                    ? colorButton
+                    : Colors.grey,
+                radius: BorderRadius.circular(40),
+                sizeText: 20,
+                colorText: Colors.white,
+                icon: '',
+              )
             ],
           ),
         ),

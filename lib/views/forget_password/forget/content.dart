@@ -104,32 +104,33 @@ class _ContentState extends State<Content> {
             height: 14,
           ),
           CustomButton(
-              colorBorderSide: colorButton,
-              assetImage: '',
-              function: () {
-                if (keyForgetPassword.currentState!.validate()) {
+            colorBorderSide: colorButton,
+            function: () {
+              if (keyForgetPassword.currentState!.validate()) {
+                setState(() {
+                  visibleCode = true;
+                });
+                if (check) {
                   setState(() {
-                    visibleCode = true;
+                    isCheckCodeHave = false;
+                    check = false;
                   });
-                  if (check) {
-                    setState(() {
-                      isCheckCodeHave = false;
-                      check = false;
-                    });
+                } else {
+                  if (codeController.text.length < 6) {
                   } else {
-                    if (codeController.text.length < 6) {
-                    } else {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const NewPasswordScreen()));
-                    }
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const NewPasswordScreen()));
                   }
                 }
-              },
-              title: "TIẾP TỤC                ",
-              colorButton: isCheckCodeHave ? colorButton : Colors.grey,
-              radius: BorderRadius.circular(40),
-              sizeText: 15,
-              colorText: Colors.white)
+              }
+            },
+            title: "TIẾP TỤC",
+            colorButton: isCheckCodeHave ? colorButton : Colors.grey,
+            radius: BorderRadius.circular(40),
+            sizeText: 15,
+            colorText: Colors.white,
+            icon: '',
+          )
         ],
       ),
     ));

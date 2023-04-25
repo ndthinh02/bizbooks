@@ -12,15 +12,18 @@ class BookUnlockScreen extends StatefulWidget {
 }
 
 class _BookUnlockScreenState extends State<BookUnlockScreen> {
+  final TextEditingController _seacrhController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        // physics: const NeverScrollableScrollPhysics(),
         child: Container(
           margin: const EdgeInsets.all(20),
           child: Column(
             children: [
-              CustomSearch.customSearch('Tìm kiếm sách'),
+              CustomSearch.customSearch(
+                  'Tìm kiếm sách', false, _seacrhController, () {}),
               const SizedBox(
                 height: 20,
               ),

@@ -143,19 +143,20 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 14,
             ),
             CustomButton(
-                colorBorderSide: colorButton,
-                function: () {
-                  if (keyLogin.currentState!.validate()) {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const ChooseCategory()));
-                  }
-                },
-                title: 'ĐĂNG NHẬP             ',
-                colorButton: colorButton,
-                radius: BorderRadius.circular(40),
-                sizeText: 16,
-                colorText: Colors.white,
-                assetImage: "")
+              colorBorderSide: colorButton,
+              function: () {
+                if (keyLogin.currentState!.validate()) {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const ChooseCategory()));
+                }
+              },
+              title: 'ĐĂNG NHẬP',
+              colorButton: colorButton,
+              radius: BorderRadius.circular(40),
+              sizeText: 16,
+              colorText: Colors.white,
+              icon: '',
+            )
           ],
         ),
       ),

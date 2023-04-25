@@ -79,10 +79,26 @@ class _AllScreenState extends State<LibraryScreen>
                         )
                       ],
                     ),
-                    const CircularProgressIndicator(
-                      color: colorButton,
-                      value: 1,
-                    ),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Text(
+                          '17/20',
+                          style: CustomText.title(18, Colors.black),
+                        ),
+                        const SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: CircularProgressIndicator(
+                            semanticsLabel: "10",
+                            strokeWidth: 10,
+                            color: colorButton,
+                            backgroundColor: Colors.amber,
+                            value: 0.7,
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),

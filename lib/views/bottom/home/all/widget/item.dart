@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter/views/details/detail_book_screen.dart';
 
 import '../../../../../models/books.dart';
 import '../../../../../ui/custom_text.dart';
@@ -9,39 +10,43 @@ class ItemAllScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-          width: 150,
-          height: 191,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: Image.asset(books.urlImage),
-              ),
-              const SizedBox(
-                height: 14,
-              ),
-              SizedBox(
-                width: 110,
-                child: Text(
-                  books.name,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: CustomText.subText(15, Colors.black),
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const DetailBookScreen())),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+            width: 150,
+            height: 191,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: Image.asset(books.urlImage),
                 ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                books.author,
-                style: CustomText.subTextLigth(15, Colors.black),
-              )
-            ],
-          )),
+                const SizedBox(
+                  height: 14,
+                ),
+                SizedBox(
+                  width: 110,
+                  child: Text(
+                    books.name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: CustomText.subText(15, Colors.black),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  books.author,
+                  style: CustomText.subTextLigth(15, Colors.black),
+                )
+              ],
+            )),
+      ),
     );
   }
 }

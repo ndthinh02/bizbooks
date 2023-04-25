@@ -10,7 +10,12 @@ import '../../ui/custom_text.dart';
 class ItemCategory extends StatefulWidget {
   final Category category;
   final int index;
-  const ItemCategory({super.key, required this.category, required this.index});
+  final bool check;
+  const ItemCategory(
+      {super.key,
+      required this.category,
+      required this.index,
+      required this.check});
 
   @override
   State<ItemCategory> createState() => _ItemCategoryState();
@@ -28,54 +33,94 @@ class _ItemCategoryState extends State<ItemCategory> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        GestureDetector(
-          onTap: () {
-            // readCategory.changeColors();
-            // print(widget.index);
-            setState(() {
-              widget.category.changeColors();
-            });
-            if (widget.category.selectedIndex == true) {
-              readChooseCategoryC.add(widget.category.name);
-            } else {
-              readChooseCategoryC.remove();
-            }
-          },
-          child: Column(
-            children: [
-              Expanded(
-                child: CircleAvatar(
-                  backgroundColor: widget.category.selectedIndex == true
-                      ? colorLight
-                      : Colors.white,
-                  radius: 50,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(widget.category.svgPicture),
-                    ],
-                  ),
+        widget.check == true
+            ? GestureDetector(
+                onTap: () {
+                  // readCategory.changeColors();
+                  // print(widget.index);
+                  setState(() {
+                    widget.category.changeColors();
+                  });
+                  if (widget.category.selectedIndex == true) {
+                    readChooseCategoryC.add(widget.category.name);
+                  } else {
+                    readChooseCategoryC.remove();
+                  }
+                },
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: widget.category.selectedIndex == true
+                            ? colorLight
+                            : Colors.white,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(widget.category.svgPicture),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                        width: 110,
+                        child: Text(
+                          widget.category.name,
+                          softWrap: true,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: widget.category.selectedIndex == true
+                              ? const TextStyle(
+                                  fontSize: 15,
+                                  color: colorButton,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'SVNGilroy')
+                              : CustomText.title(15, Colors.black),
+                        ))
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 14,
-              ),
-              SizedBox(
-                  width: 100,
-                  child: Text(
-                    widget.category.name,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    style: widget.category.selectedIndex == true
-                        ? const TextStyle(
-                            color: colorButton,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'SVNGilroy')
-                        : CustomText.subText(15, Colors.black),
-                  ))
-            ],
-          ),
-        )
+              )
+            : GestureDetector(
+                onTap: () {
+                  print('navigator screen detail category');
+                },
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 50,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(widget.category.svgPicture),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    SizedBox(
+                        width: 100,
+                        child: Text(
+                          widget.category.name,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: widget.category.selectedIndex == true
+                              ? const TextStyle(
+                                  color: colorButton,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'SVNGilroy')
+                              : CustomText.subText(15, Colors.black),
+                        ))
+                  ],
+                ),
+              )
       ],
     );
   }

@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(const Duration(seconds: 4), (timer) {
+    Timer.periodic(const Duration(seconds: 2), (timer) {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const Onboard1Screen(),
       ));

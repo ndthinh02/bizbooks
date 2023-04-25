@@ -99,23 +99,24 @@ class _ContentState extends State<Content> {
               ],
             ),
             CustomButton(
-                colorBorderSide: colorButton,
-                assetImage: '',
-                function: () {
-                  if (keyNewpassword.currentState!.validate()) {
-                    CustomBottomSheet.showBottom(
-                        context,
-                        "Đổi mật khẩu ",
-                        "thành công",
-                        "Mật khẩu mới của bạn là",
-                        "thinhjerry1410@gmail.com");
-                  }
-                },
-                title: "Tạo mật khẩu mới              ",
-                colorButton: colorButton,
-                radius: BorderRadius.circular(40),
-                sizeText: 15,
-                colorText: Colors.white)
+              colorBorderSide: colorButton,
+              function: () {
+                if (keyNewpassword.currentState!.validate()) {
+                  CustomBottomSheet.showBottom(
+                      context,
+                      "Đổi mật khẩu ",
+                      "thành công",
+                      "Mật khẩu mới của bạn là",
+                      "thinhjerry1410@gmail.com");
+                }
+              },
+              title: "Tạo mật khẩu mới",
+              colorButton: colorButton,
+              radius: BorderRadius.circular(40),
+              sizeText: 15,
+              colorText: Colors.white,
+              icon: '',
+            )
           ],
         ),
       ),

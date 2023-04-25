@@ -63,6 +63,17 @@ List<Books> mListBooks = [
 ];
 
 class BookProvider extends ChangeNotifier {
-  final List<Books> _mList = mListBooks;
+  List<Books> _mList = mListBooks;
   List<Books> get listBooks => _mList;
+
+  void seacrh(String value) {
+    List<Books> listBooks = [];
+    if (value.isEmpty) {
+      _mList = listBooks;
+    } else {
+      _mList = _mList.where((element) => element.name.contains(value)).toList();
+    }
+    print(_mList);
+    notifyListeners();
+  }
 }

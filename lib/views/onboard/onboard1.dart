@@ -1,72 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter/ui/color.dart';
-import 'package:ui_flutter/ui/custom_text.dart';
-import 'package:ui_flutter/views/onboard/onboard2.dart';
+import 'package:ui_flutter/models/onboard.dart';
+import 'package:ui_flutter/views/onboard/onboard_content.dart';
 
 class Onboard1Screen extends StatefulWidget {
   const Onboard1Screen({super.key});
 
   @override
-  State<Onboard1Screen> createState() => _Onboard1ScreenState();
+  State<Onboard1Screen> createState() => _SliderWidgetState();
 }
 
-class _Onboard1ScreenState extends State<Onboard1Screen> {
+class _SliderWidgetState extends State<Onboard1Screen> {
+  PageController controller = PageController();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controller.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = PageController(initialPage: 0);
+  }
+  // int activeIndex = 0;
+  // Widget buildImage(int index) {
+  //   return ClipRRect(
+  //     borderRadius: BorderRadius.circular(4),
+  //     child: Image.asset(
+  //       mlistOnboard[index].image,
+  //       fit: BoxFit.cover,
+  //     ),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("images/onboard1.png"), fit: BoxFit.cover)),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                end: Alignment.bottomCenter,
-                colors: [colorBeginGradient, colorEndGradient]),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const SizedBox(
-                height: 140,
-              ),
-              Text("Khám phá", style: CustomText.title(28, Colors.white)),
-              Text("thư viện sách nói",
-                  style: CustomText.title(28, Colors.white)),
-              const SizedBox(
-                height: 50,
-              ),
-              SizedBox(
-                  width: 303,
-                  height: 56,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: colorButton,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40))),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Onboard2Screen(),
-                        ));
-                      },
-                      child: const Text("TIẾP TỤC"))),
-              const SizedBox(
-                height: 50,
-              ),
-              Container(
-                margin: const EdgeInsets.only(bottom: 150),
-                child: Text(
-                  "Bỏ qua bước này",
-                  style: CustomText.subText(15, Colors.white),
-                ),
-              ),
-            ],
-          ),
+      body: SafeArea(
+        child: PageView.builder(
+          controller: controller,
+          itemCount: mlistOnboard.length,
+          itemBuilder: (context, index) {
+            return OnBoardContent(
+              image: mlistOnboard[index].image,
+              titleButton: mlistOnboard[index].titleButton,
+              skip: mlistOnboard[index].skip,
+              title: mlistOnboard[index].title,
+              index: index,
+              pageController: controller,
+            );
+          },
         ),
       ),
-    ));
+    );
   }
+
+  // Widget buildIndicator() => AnimatedSmoothIndicator(
+  //       onDotClicked: animateToSlide,
+  //       effect: const ColorTransitionEffect(
+  //           dotHeight: 8,
+  //           dotWidth: 8,
+  //           activeDotColor: Colors.white,
+  //           dotColor: Colors.grey),
+  //       activeIndex: activeIndex,
+  //       count: mlistOnboard.length,
+  //     );
+
+  // void animateToSlide(int index) => controller.animateToPage(index);
 }

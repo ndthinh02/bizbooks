@@ -10,53 +10,42 @@ class CustomButton extends StatelessWidget {
   final BorderRadius radius;
   final double sizeText;
   final Color colorText;
-  String? assetImage;
-  CustomButton(
-      {super.key,
-      required this.function,
-      required this.title,
-      required this.colorButton,
-      required this.radius,
-      required this.sizeText,
-      required this.colorText,
-      required this.colorBorderSide,
-      this.assetImage});
+  final String icon;
+
+  const CustomButton({
+    super.key,
+    required this.icon,
+    required this.function,
+    required this.title,
+    required this.colorButton,
+    required this.radius,
+    required this.sizeText,
+    required this.colorText,
+    required this.colorBorderSide,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
       child: Center(
         child: SizedBox(
-          width: 303,
+          width: double.infinity,
           height: 56,
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  side: BorderSide(width: 1, color: colorBorderSide),
-                  backgroundColor: colorButton,
-                  shape: RoundedRectangleBorder(borderRadius: radius)),
-              onPressed: () {
-                function();
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    assetImage!,
-                    width: 24,
-                    height: 24,
-                  ),
-                  const SizedBox(
-                    width: 24,
-                  ),
-                  InkWell(
-                    child: Text(
-                      title,
-                      style: CustomText.title(sizeText, colorText),
-                    ),
-                  ),
-                ],
-              )),
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+                side: BorderSide(width: 1, color: colorBorderSide),
+                backgroundColor: colorButton,
+                shape: RoundedRectangleBorder(borderRadius: radius)),
+            onPressed: () {
+              function();
+            },
+            icon: Container(child: SvgPicture.asset(icon)),
+            label: Text(
+              title,
+              style: CustomText.title(sizeText, colorText),
+            ),
+          ),
         ),
       ),
     );

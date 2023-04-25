@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter/ui/custom_text_filed.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui_flutter/ui/color.dart';
+import 'package:ui_flutter/ui/custom_text.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/book_good.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/category.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/most_listen.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/slider.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/sugessted.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/was_watching.dart';
+import 'package:ui_flutter/views/bottom/search_screen.dart';
 
 class AllScreen extends StatefulWidget {
   const AllScreen({super.key});
@@ -15,6 +18,7 @@ class AllScreen extends StatefulWidget {
 }
 
 class _AllScreenState extends State<AllScreen> {
+  final TextEditingController _seacrhController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +27,28 @@ class _AllScreenState extends State<AllScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomSearch.customSearch("Tìm kiếm sách"),
+            GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SearchScreen()));
+                  print('siuuu');
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: colorBackgroundTextFiled,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: ListTile(
+                    leading: SvgPicture.asset("images/icon_search.svg"),
+                    title: Text(
+                      "Tìm kiếm",
+                      style: CustomText.subText(17, Colors.black),
+                    ),
+                    trailing: const Icon(
+                      Icons.cancel,
+                      color: Colors.grey,
+                    ),
+                  ),
+                )),
             const SizedBox(height: 30),
             const SizedBox(
               height: 14,

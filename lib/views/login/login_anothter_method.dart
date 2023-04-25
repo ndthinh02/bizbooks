@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
+import 'package:ui_flutter/views/audio_player/player_audio_screen.dart';
 import 'package:ui_flutter/views/login/login.dart';
 import 'package:ui_flutter/views/register/register.dart';
 
@@ -29,10 +30,10 @@ class LoginAnotherMethodScreen extends StatelessWidget {
             children: [
               Container(
                   margin: const EdgeInsets.only(
-                      right: 20, left: 20, bottom: 20, top: 100),
+                      right: 20, left: 20, bottom: 20, top: 60),
                   child: _buildHeader(context)),
               const SizedBox(
-                height: 100,
+                height: 200,
               ),
               _buildButton(context),
               _buildFooter(context),
@@ -45,10 +46,12 @@ class LoginAnotherMethodScreen extends StatelessWidget {
 
   Widget _buildFooter(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 80, right: 20),
+      margin: const EdgeInsets.only(bottom: 50, right: 20, top: 40),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "Chưa có tài khoản ?",
@@ -84,6 +87,7 @@ class LoginAnotherMethodScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Đăng nhập",
@@ -97,11 +101,11 @@ class LoginAnotherMethodScreen extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
+            builder: (context) => const PlayerAudioScreen(),
           )),
           child: Text(
             "Bỏ qua",
-            style: CustomText.subText(17, Colors.white),
+            style: CustomText.subTextLigth(17, Colors.white),
           ),
         )
       ],
@@ -112,35 +116,34 @@ class LoginAnotherMethodScreen extends StatelessWidget {
     return Column(
       children: [
         CustomButton(
-          colorBorderSide: colorButton,
+          colorBorderSide: colorFacebook,
           function: () {},
-          title: "Đăng nhập bằng facebook",
-          colorButton: colorButton,
+          title: "Đăng nhập bằng Facebook",
+          colorButton: colorFacebook,
           radius: BorderRadius.circular(40),
           sizeText: 15,
           colorText: Colors.white,
-          assetImage: 'images/fb.svg',
+          icon: 'images/fb.svg',
         ),
         CustomButton(
           colorBorderSide: Colors.white,
           function: () {},
-          title: "Đăng nhập bằng google",
+          title: "Đăng nhập bằng Gmail",
           colorButton: Colors.white,
           radius: BorderRadius.circular(40),
           sizeText: 15,
           colorText: Colors.black,
-          assetImage: 'images/google.svg',
+          icon: 'images/google.svg',
         ),
         CustomButton(
-          function: () {},
-          title: "Đăng nhập bằng apple",
-          colorButton: Colors.white70,
-          radius: BorderRadius.circular(40),
-          sizeText: 15,
-          colorText: Colors.black,
-          assetImage: 'images/apple.svg',
-          colorBorderSide: Colors.white,
-        ),
+            function: () {},
+            title: "Đăng nhập bằng Apple",
+            colorButton: Colors.white70,
+            radius: BorderRadius.circular(40),
+            sizeText: 15,
+            colorText: Colors.black,
+            colorBorderSide: Colors.white,
+            icon: 'images/apple.svg'),
         const SizedBox(
           height: 70,
         ),
@@ -157,7 +160,7 @@ class LoginAnotherMethodScreen extends StatelessWidget {
                     builder: (context) => const LoginScreen()));
               },
               child: Text(
-                "Đăng nhập với Bizbooks",
+                "Đăng nhập tài khoản Bizbooks",
                 textAlign: TextAlign.center,
                 style: CustomText.title(15, Colors.white),
               )),

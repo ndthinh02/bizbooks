@@ -62,12 +62,12 @@ class CustomBottomSheet {
                   CustomButton(
                     colorBorderSide: colorButton,
                     function: () => Navigator.of(context).pop(),
-                    title: 'Xác nhận                 ',
+                    title: 'Xác nhận',
                     colorButton: colorButton,
                     radius: BorderRadius.circular(40),
                     sizeText: 17,
                     colorText: Colors.white,
-                    assetImage: "",
+                    icon: '',
                   )
                 ],
               ));

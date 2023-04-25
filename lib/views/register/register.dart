@@ -4,7 +4,6 @@ import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
 import 'package:ui_flutter/ui/custom_text_filed.dart';
-import 'package:ui_flutter/utils/dialog.dart';
 import 'package:ui_flutter/utils/key.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -137,19 +136,20 @@ class _LoginScreenState extends State<RegisterScreen> {
             height: 10,
           ),
           CustomButton(
-              colorBorderSide: colorButton,
-              function: () {
-                if (keyRegister.currentState!.validate()) {
-                  CustomBottomSheet.showBottom(context, "Tạo tài khoản",
-                      'thành công', 'Tài khoản Bizbooks của bạn là', "");
-                }
-              },
-              title: 'Tạo tài khoản        ',
-              colorButton: colorButton,
-              radius: BorderRadius.circular(40),
-              sizeText: 16,
-              colorText: Colors.white,
-              assetImage: ""),
+            colorBorderSide: colorButton,
+            function: () {
+              if (keyRegister.currentState!.validate()) {
+                // CustomBottomSheet.showBottom(context, "Tạo tài khoản",
+                //     'thành công', 'Tài khoản Bizbooks của bạn là', "");
+              }
+            },
+            title: 'Tạo tài khoản',
+            colorButton: colorButton,
+            radius: BorderRadius.circular(40),
+            sizeText: 16,
+            colorText: Colors.white,
+            icon: '',
+          ),
           const SizedBox(
             height: 10,
           ),
