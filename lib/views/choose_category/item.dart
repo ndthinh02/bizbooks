@@ -48,13 +48,19 @@ class _ItemCategoryState extends State<ItemCategory> {
                   }
                 },
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
+                    CircleAvatar(
+                      backgroundColor: widget.category.selectedIndex == true
+                          ? colorBackgroundTextFiled
+                          : colorScafold,
+                      radius: 45,
                       child: CircleAvatar(
-                        radius: 50,
+                        radius: 40,
                         backgroundColor: widget.category.selectedIndex == true
                             ? colorLight
-                            : Colors.white,
+                            : colorScafold,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -64,7 +70,7 @@ class _ItemCategoryState extends State<ItemCategory> {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 5,
                     ),
                     SizedBox(
                         width: 110,
@@ -74,49 +80,39 @@ class _ItemCategoryState extends State<ItemCategory> {
                           maxLines: 2,
                           textAlign: TextAlign.center,
                           style: widget.category.selectedIndex == true
-                              ? const TextStyle(
-                                  fontSize: 15,
-                                  color: colorButton,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'SVNGilroy')
-                              : CustomText.title(15, Colors.black),
+                              ? CustomText.title(13, colorButton)
+                              : CustomText.title(13, colorTextFiled),
                         ))
                   ],
                 ),
               )
             : GestureDetector(
-                onTap: () {
-                  print('navigator screen detail category');
-                },
+                onTap: () {},
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 50,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(widget.category.svgPicture),
-                          ],
-                        ),
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: colorScafold,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(widget.category.svgPicture),
+                        ],
                       ),
                     ),
                     const SizedBox(
-                      height: 14,
+                      height: 5,
                     ),
                     SizedBox(
-                        width: 100,
+                        width: 110,
                         child: Text(
                           widget.category.name,
+                          softWrap: true,
                           maxLines: 2,
                           textAlign: TextAlign.center,
-                          style: widget.category.selectedIndex == true
-                              ? const TextStyle(
-                                  color: colorButton,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'SVNGilroy')
-                              : CustomText.subText(15, Colors.black),
+                          style: CustomText.title(13, colorTextFiled),
                         ))
                   ],
                 ),

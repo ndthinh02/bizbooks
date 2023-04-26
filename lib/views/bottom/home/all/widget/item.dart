@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/views/details/detail_book_screen.dart';
 
 import '../../../../../models/books.dart';
@@ -13,11 +14,11 @@ class ItemAllScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const DetailBookScreen())),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         child: SizedBox(
-            width: 150,
-            height: 191,
+            width: 110,
+            height: 180,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -34,7 +35,7 @@ class ItemAllScreen extends StatelessWidget {
                     books.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomText.subText(15, Colors.black),
+                    style: CustomText.title(15, colorLabalTextFiled),
                   ),
                 ),
                 const SizedBox(
@@ -42,7 +43,7 @@ class ItemAllScreen extends StatelessWidget {
                 ),
                 Text(
                   books.author,
-                  style: CustomText.subTextLigth(15, Colors.black),
+                  style: CustomText.subTextLigth(15, colorTextFiled),
                 )
               ],
             )),

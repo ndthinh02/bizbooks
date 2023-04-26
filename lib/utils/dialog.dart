@@ -32,11 +32,11 @@ class CustomBottomSheet {
                     style: CustomText.title(28, Colors.black),
                   ),
                   const SizedBox(
-                    height: 35,
+                    height: 25,
                   ),
                   SvgPicture.asset("images/icon_check.svg"),
                   const SizedBox(
-                    height: 35,
+                    height: 20,
                   ),
                   Text(
                     email,
@@ -50,10 +50,10 @@ class CustomBottomSheet {
                     style: CustomText.subText(17, Colors.black),
                   ),
                   const SizedBox(
-                    height: 35,
+                    height: 10,
                   ),
                   Text(
-                    "thinhpro123",
+                    "\"duyquang94bn\"",
                     style: CustomText.subText(17, colorButton),
                   ),
                   const SizedBox(
@@ -68,7 +68,7 @@ class CustomBottomSheet {
                     sizeText: 17,
                     colorText: Colors.white,
                     icon: const SizedBox(),
-                    marginHorizontal: 50,
+                    marginHorizontal: 90,
                     marginVertical: 8,
                     isCheckHaveIcon: false,
                   )

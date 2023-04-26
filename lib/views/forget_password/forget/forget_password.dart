@@ -14,11 +14,14 @@ class ForgetPasswordScreen extends StatefulWidget {
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Container(
               width: double.infinity,
-              height: double.infinity,
+              height: screenHeight - keyboardHeight,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("images/image_forget_password.png"),

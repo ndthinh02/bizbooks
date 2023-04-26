@@ -52,12 +52,16 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                   Container(
                                     width: MediaQuery.of(context).size.width,
                                     height: 700,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            opacity: 8 / 100,
+                                            colorFilter: ColorFilter.mode(
+                                              const Color(0xFFe8e8e8)
+                                                  .withOpacity(0.1),
+                                              BlendMode.modulate,
+                                            ),
                                             fit: BoxFit.fitHeight,
-                                            image: AssetImage(
-                                              "images/image_eagle.png",
+                                            image: const AssetImage(
+                                              "images/image_book.png",
                                             ))),
                                   ),
                                   Padding(
@@ -83,7 +87,6 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                               child: Row(
                                                 children: [
                                                   SizedBox(
-                                                    width: 130,
                                                     height: 40,
                                                     child: ElevatedButton.icon(
                                                       onPressed: () {},
@@ -94,7 +97,7 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                                                       .circular(
                                                                           40)),
                                                           backgroundColor:
-                                                              colorSuccessDark),
+                                                              colorGreenMedium),
                                                       icon: SvgPicture.asset(
                                                           "images/icon_book.svg"),
                                                       label: Text(
@@ -131,9 +134,12 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                                     child: SvgPicture.asset(
                                                         "images/icon_cd.svg")),
                                                 Image.asset(
-                                                  "images/image_eagle.png",
+                                                  "images/image_book.png",
                                                 ),
                                               ],
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
                                             ),
                                             Row(
                                               mainAxisAlignment:
@@ -147,9 +153,9 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                               height: 8,
                                             ),
                                             SizedBox(
-                                              width: 100,
+                                              width: 240,
                                               child: Text(
-                                                "The Swallows",
+                                                "Little Bad Habits \n Growth Stronger",
                                                 textAlign: TextAlign.center,
                                                 maxLines: 2,
                                                 style: CustomText.title(
@@ -161,11 +167,11 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                             ),
                                             Text(
                                               "Lisa Lutz",
-                                              style: CustomText.subTextLigth(
-                                                  15, Colors.black),
+                                              style: CustomText.subText(
+                                                  15, colorTextFiled),
                                             ),
                                             const SizedBox(
-                                              height: 8,
+                                              height: 40,
                                             ),
                                             CustomButton(
                                               colorBorderSide: colorButton,
@@ -176,9 +182,9 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                               sizeText: 15,
                                               colorText: Colors.white,
                                               icon: const SizedBox(),
-                                              marginHorizontal: 50,
+                                              marginHorizontal: 20,
                                               marginVertical: 8,
-                                              isCheckHaveIcon: true,
+                                              isCheckHaveIcon: false,
                                             ),
                                             CustomButton(
                                               function: () {
@@ -195,9 +201,9 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                               colorBorderSide:
                                                   colorTextRegister,
                                               icon: const SizedBox(),
-                                              marginHorizontal: 50,
+                                              marginHorizontal: 20,
                                               marginVertical: 8,
-                                              isCheckHaveIcon: true,
+                                              isCheckHaveIcon: false,
                                             ),
                                           ],
                                         ),
@@ -208,28 +214,47 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                               ),
                             ],
                           ),
-                          TabBar(
-                              labelColor: Colors.black,
-                              labelStyle: CustomText.title(18, Colors.black),
-                              controller: _tabController,
-                              tabs: const [
-                                Tab(
-                                  child: Text("Giới thiệu"),
-                                ),
-                                Tab(
-                                  child: Text("Đánh giá"),
-                                )
-                              ])
+                          Container(
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    topRight: Radius.circular(12))),
+                            child: TabBar(
+                                labelPadding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 8),
+                                // labelPadding: const EdgeInsets.only(top: 20),
+                                indicator: const UnderlineTabIndicator(
+                                    borderSide: BorderSide(
+                                        color: colorButton, width: 3)),
+                                isScrollable: true,
+                                labelColor: Colors.black,
+                                labelStyle: CustomText.title(20, Colors.black),
+                                unselectedLabelColor: colorTextAuthor,
+                                unselectedLabelStyle:
+                                    CustomText.title(20, colorTextAuthor),
+                                controller: _tabController,
+                                tabs: const [
+                                  Tab(
+                                    child: Text("Giới thiệu"),
+                                  ),
+                                  Tab(
+                                    child: Text("Đánh giá"),
+                                  ),
+                                ]),
+                          )
                         ],
                       ),
                     ),
                   )
                 ];
               },
-              body: SafeArea(
-                child: TabBarView(
-                    controller: _tabController,
-                    children: const [IntroduceWidget(), AssessWidget()]),
+              body: Container(
+                color: const Color(0xFFffffff),
+                child: SafeArea(
+                  child: TabBarView(
+                      controller: _tabController,
+                      children: const [IntroduceWidget(), AssessWidget()]),
+                ),
               ),
             )));
   }

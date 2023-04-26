@@ -92,6 +92,8 @@ flutter:
           weight: 400
         - asset: fonts/SVN-Gilroy-SemiBold.otf   
           weight: 700
+        - asset: fonts/SVN-Gilroy-Regular.otf   
+          weight: 500
   #   - family: SVNGilroy-Light
   #     fonts:
   #       - asset: fonts/SVNGilroy-Light.otf

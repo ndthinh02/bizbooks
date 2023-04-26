@@ -6,6 +6,8 @@ import 'package:ui_flutter/views/bottom/home/home_screen.dart';
 import 'package:ui_flutter/views/bottom/profile_screen.dart';
 import 'package:ui_flutter/views/bottom/search_screen.dart';
 
+import '../../ui/custom_text.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -30,7 +32,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            unselectedLabelStyle: CustomText.subText(13, colorTextFiled),
+            selectedLabelStyle: CustomText.subText(13, colorTextFiled),
             fixedColor: _selectedIndex == 0
                 ? colorButton
                 : _selectedIndex == 1
@@ -44,30 +50,42 @@ class _MyHomePageState extends State<MyHomePage> {
             items: [
               BottomNavigationBarItem(
                 label: "Home",
-                icon: SvgPicture.asset(
-                  "images/icon_home.svg",
-                  color: _selectedIndex == 0 ? colorButton : Colors.black,
+                icon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    "images/icon_home.svg",
+                    color: _selectedIndex == 0 ? colorButton : colorTextFiled,
+                  ),
                 ),
               ),
               BottomNavigationBarItem(
-                label: "Search ",
-                icon: SvgPicture.asset(
-                  "images/icon_search.svg",
-                  color: _selectedIndex == 1 ? colorButton : Colors.black,
+                label: "Tìm kiếm",
+                icon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    "images/icon_search.svg",
+                    color: _selectedIndex == 1 ? colorButton : colorTextFiled,
+                  ),
                 ),
               ),
               BottomNavigationBarItem(
-                label: "Cart",
-                icon: SvgPicture.asset(
-                  "images/icon_cart.svg",
-                  color: _selectedIndex == 2 ? colorButton : Colors.black,
+                label: "Giỏ hàng",
+                icon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    "images/icon_cart.svg",
+                    color: _selectedIndex == 2 ? colorButton : colorTextFiled,
+                  ),
                 ),
               ),
               BottomNavigationBarItem(
-                label: "Profile",
-                icon: SvgPicture.asset(
-                  "images/icon_person.svg",
-                  color: _selectedIndex == 3 ? colorButton : Colors.black,
+                label: "Cá nhân",
+                icon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    "images/icon_person.svg",
+                    color: _selectedIndex == 3 ? colorButton : colorTextFiled,
+                  ),
                 ),
               ),
             ]),

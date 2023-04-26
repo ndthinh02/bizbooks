@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
-import 'package:ui_flutter/ui/custom_text_filed.dart';
 import 'package:ui_flutter/utils/key.dart';
 import 'package:ui_flutter/views/choose_category/choose_category.dart';
 
+import '../../ui/custom_text_filed.dart';
 import '../forget_password/forget/forget_password.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -26,11 +26,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
             width: double.infinity,
-            height: double.infinity,
+            height: screenHeight - keyboardHeight,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("images/image_login.png"),
@@ -38,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Container(
               margin: const EdgeInsets.only(left: 24, top: 24),
               child: SingleChildScrollView(
+                physics: const ClampingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -79,12 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintText: "Email đăng nhập",
                     textEditingController: emailController,
                     showPass: false,
-                    textValidate: '*Email không chính xác',
-                    isCheckEmail: true,
-                    isCheckPassword: true,
-                  ),
-                  const SizedBox(
-                    height: 14,
+                    funtionOnchanged: () {
+                      if (keyLogin.currentState!.validate()) {}
+                    },
+                    funtionValidator: (String? value) {
+                      if (value!.isEmpty) {
+                        return value = "*Email không được trống";
+                      }
+                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                        return value = "*Email không hợp lệ";
+                      }
+                      return null;
+                    },
                   ),
                   Row(
                     children: [
@@ -93,9 +103,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           showPass: isShowPassword,
                           hintText: "Mật khẩu",
                           textEditingController: passwordController,
-                          textValidate: '*Mật khẩu không được trống',
-                          isCheckEmail: false,
-                          isCheckPassword: true,
+                          funtionOnchanged: () {
+                            if (keyLogin.currentState!.validate()) {}
+                          },
+                          funtionValidator: (String? value) {
+                            if (value!.isEmpty) {
+                              return value = "*Mật khẩu không được trống";
+                            } else if (value.length < 6) {
+                              return value = "*Mật khẩu phải gồm 6 ký tự";
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       GestureDetector(
@@ -105,8 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                         child: Container(
-                          margin: const EdgeInsets.only(
-                              right: 20, top: 20, left: 10),
+                          margin: const EdgeInsets.only(right: 20, left: 10),
                           child: isShowPassword == true
                               ? SvgPicture.asset("images/icon_eyes.svg")
                               : SvgPicture.asset("images/icon_eyes_off.svg"),
@@ -116,11 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               )),
-          const SizedBox(
-            height: 14,
-          ),
           Container(
-            margin: const EdgeInsets.only(left: 24, top: 20),
+            margin: const EdgeInsets.only(left: 24, top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -145,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           const SizedBox(
-            height: 26,
+            height: 36,
           ),
           GestureDetector(
             onTap: () {
@@ -157,25 +171,23 @@ class _LoginScreenState extends State<LoginScreen> {
               style: CustomText.title(15, Colors.black),
             ),
           ),
-          Expanded(
-            child: CustomButton(
-              colorBorderSide: colorButton,
-              function: () {
-                if (keyLogin.currentState!.validate()) {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const ChooseCategory()));
-                }
-              },
-              title: 'ĐĂNG NHẬP',
-              colorButton: colorButton,
-              radius: 40,
-              sizeText: 16,
-              colorText: Colors.white,
-              icon: const SizedBox(),
-              marginHorizontal: 20,
-              marginVertical: 8,
-              isCheckHaveIcon: false,
-            ),
+          CustomButton(
+            colorBorderSide: colorButton,
+            function: () {
+              if (keyLogin.currentState!.validate()) {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const ChooseCategory()));
+              }
+            },
+            title: 'ĐĂNG NHẬP',
+            colorButton: colorButton,
+            radius: 40,
+            sizeText: 16,
+            colorText: Colors.white,
+            icon: const SizedBox(),
+            marginHorizontal: 20,
+            marginVertical: 50,
+            isCheckHaveIcon: false,
           )
         ],
       ),

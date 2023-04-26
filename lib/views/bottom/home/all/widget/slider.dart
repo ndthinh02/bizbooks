@@ -20,9 +20,17 @@ class _SliderWidgetState extends State<SliderWidget> {
   Widget buildImage(int index) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(4),
-      child: Image.asset(
-        _mListImage[index],
-        fit: BoxFit.cover,
+      child: Container(
+        width: 330,
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Image.asset(
+            _mListImage[index],
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
@@ -37,10 +45,11 @@ class _SliderWidgetState extends State<SliderWidget> {
             return buildImage(index);
           },
           options: CarouselOptions(
-              height: 200,
+              // reverse: false,
+              height: 190,
               autoPlay: true,
-              enableInfiniteScroll: false,
-              enlargeCenterPage: true,
+              // enableInfiniteScroll: false,
+              // enlargeCenterPage: true,
               onPageChanged: (index, reason) =>
                   setState(() => activeIndex = index))),
       Padding(

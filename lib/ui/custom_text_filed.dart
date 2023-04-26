@@ -3,25 +3,23 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
 
-import '../utils/key.dart';
-
 class CustomTextFiled extends StatelessWidget {
   final TextEditingController textEditingController;
   final String hintText;
   final bool showPass;
-  final String textValidate;
-  final bool isCheckEmail;
-  final bool isCheckPassword;
+  final String? Function(String?) funtionValidator;
+  final Function funtionOnchanged;
+
   // final bool
 
-  const CustomTextFiled(
-      {super.key,
-      required this.hintText,
-      required this.textEditingController,
-      required this.showPass,
-      required this.textValidate,
-      required this.isCheckEmail,
-      required this.isCheckPassword});
+  const CustomTextFiled({
+    super.key,
+    required this.hintText,
+    required this.textEditingController,
+    required this.showPass,
+    required this.funtionValidator,
+    required this.funtionOnchanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,45 +28,30 @@ class CustomTextFiled extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
     );
 
+    var outlineInputBorder2 = OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(width: 1, color: colorTextError));
     return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+      margin: const EdgeInsets.only(left: 15, right: 15, top: 2),
       child: Column(
         children: [
           TextFormField(
+            scrollPadding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom + 15 * 4),
             style: CustomText.subText(16, colorLabalTextFiled),
             controller: textEditingController,
-            validator: (value) {
-              if (isCheckEmail) {
-                if (value!.isEmpty ||
-                    !RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                  return value = textValidate;
-                }
-              }
-              if (isCheckPassword) {
-                if (value!.isEmpty) {
-                  return value = textValidate;
-                }
-                if (value.length < 6) {
-                  return value = "*Mật khẩu phải lớn hơn 6 kí tự";
-                }
-              }
-              return null;
-            },
+            validator: funtionValidator,
             onChanged: (string) {
-              if (keyLogin.currentState!.validate()) {}
-              if (keyNewpassword.currentState!.validate()) {}
+              funtionOnchanged();
             },
             obscureText: showPass,
             decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(20),
                 filled: true,
-                errorStyle: CustomText.subText(13, colorTextError),
-                errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: colorTextError,
-                    )),
+                // enabledBorder: outlineInputBorder2,
+                errorBorder: outlineInputBorder2,
+                helperText: '',
+                errorStyle: CustomText.styleTextError(13, colorTextError),
                 fillColor: colorBackgroundTextFiled,
                 hintText: hintText,
                 hintStyle: CustomText.subText(15, colorTextFiled),

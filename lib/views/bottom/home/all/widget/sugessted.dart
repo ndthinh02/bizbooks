@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ui_flutter/ui/color.dart';
 
 // import 'package:ui_flutter/views/bottom/home/all/item.dart';
 
@@ -16,9 +17,9 @@ class Suggested extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Gợi ý cho bạn', style: CustomText.title(21, Colors.black)),
+        Text('Gợi ý cho bạn', style: CustomText.title(21, colorLabalTextFiled)),
         const SizedBox(
-          height: 14,
+          height: 20,
         ),
         Consumer<BookProvider>(
           builder: (context, value, child) {

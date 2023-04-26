@@ -20,6 +20,15 @@ class CustomText {
         fontWeight: FontWeight.w400);
   }
 
+  static TextStyle styleTextError(double size, Color color) {
+    return TextStyle(
+        fontFamily: 'SVNGilroy',
+        fontSize: size,
+        color: color,
+        letterSpacing: 0.25,
+        fontWeight: FontWeight.w400);
+  }
+
   static TextStyle textMedium(double size, Color color) {
     return TextStyle(
         fontFamily: 'SVNGilroy',

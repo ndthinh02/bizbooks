@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/models/books.dart';
 import 'package:ui_flutter/models/category.dart';
+import 'package:ui_flutter/views/choose_category/choose_category.dart';
 import 'package:ui_flutter/views/choose_category/choose_category_provider.dart';
-import 'package:ui_flutter/views/splash_screen.dart';
 
 void main() {
   runApp(DevicePreview(
@@ -36,6 +36,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(),
-        home: const SplashScreen());
+        home: const ChooseCategory());
   }
 }

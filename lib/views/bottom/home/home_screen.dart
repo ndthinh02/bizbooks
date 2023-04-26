@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
+import 'package:ui_flutter/views/bottom/home/all/all_screen.dart';
 
-import 'all/all_screen.dart';
 import 'gift/gift_screen.dart';
 import 'lib/libary_screen.dart';
 
@@ -21,26 +21,36 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 3,
       child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              TabBar(
-                splashBorderRadius: BorderRadius.circular(40),
-                indicatorWeight: 4,
-                labelColor: Colors.black,
-                labelStyle: CustomText.title(24, Colors.black),
-                indicatorColor: colorButton,
-                automaticIndicatorColorAdjustment: false,
-                tabs: const [
-                  Tab(
-                    text: "Tất cả",
-                  ),
-                  Tab(
-                    text: "Thư viện",
-                  ),
-                  Tab(
-                    text: "Quà tặng",
-                  ),
-                ],
+              SizedBox(
+                child: TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicator: const UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                    width: 3,
+                    color: colorButton,
+                  )),
+                  isScrollable: true,
+                  labelColor: Colors.black,
+                  labelStyle: CustomText.title(24, Colors.black),
+                  unselectedLabelColor: colorTextAuthor,
+                  unselectedLabelStyle: CustomText.title(24, colorTextAuthor),
+                  automaticIndicatorColorAdjustment: false,
+                  tabs: const [
+                    Tab(
+                      text: "Tất cả ",
+                    ),
+                    Tab(
+                      text: "Thư viện",
+                    ),
+                    Tab(
+                      text: "Quà tặng",
+                    ),
+                  ],
+                ),
               ),
               const Expanded(
                 child: TabBarView(

@@ -20,15 +20,21 @@ class CategoryInAllScreen extends StatelessWidget {
               "Danh mục",
               style: CustomText.title(21, Colors.black),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const SeemoreCategoryScreen())),
               child: Text(
                 "Xem tất cả",
-                style: CustomText.subText(13, colorButton),
+                style: CustomText.subText(15, colorButton),
               ),
             )
           ],
+        ),
+        const SizedBox(
+          height: 14,
         ),
         Consumer<ChooseCategoryProvider>(
           builder: (context, value, child) {
@@ -38,28 +44,34 @@ class CategoryInAllScreen extends StatelessWidget {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 final item = value.mList[index];
-                return Row(
-                  children: [
-                    SvgPicture.asset(item.svgPicture,
-                        width: 33, height: 33, fit: BoxFit.scaleDown),
-                    const SizedBox(
-                      width: 14,
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                          width: 100,
+                return Container(
+                  // color: Colors.amber,
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(item.svgPicture,
+                          width: 50, height: 50, fit: BoxFit.scaleDown),
+                      const SizedBox(
+                        width: 14,
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          width: 110,
                           child: Text(
                             item.name,
-                            style: CustomText.title(15, Colors.black),
-                          )),
-                    )
-                  ],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: CustomText.title(15, colorLabalTextFiled),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 );
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 3 / 2,
-                  mainAxisSpacing: 0.2,
-                  crossAxisSpacing: 100,
+                  childAspectRatio: 2.4,
+                  crossAxisSpacing: 14,
+                  mainAxisSpacing: 0.75,
                   crossAxisCount: 2),
             );
           },

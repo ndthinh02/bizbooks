@@ -22,6 +22,8 @@ class _AllScreenState extends State<AllScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: colorScafold,
       body: Container(
         margin: const EdgeInsets.all(20),
         child: Column(
@@ -31,17 +33,18 @@ class _AllScreenState extends State<AllScreen> {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const SearchScreen()));
-                  print('siuuu');
                 },
                 child: Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  height: 50,
                   decoration: BoxDecoration(
                       color: colorBackgroundTextFiled,
                       borderRadius: BorderRadius.circular(8)),
                   child: ListTile(
                     leading: SvgPicture.asset("images/icon_search.svg"),
                     title: Text(
-                      "Tìm kiếm",
-                      style: CustomText.subText(17, Colors.black),
+                      "Tìm kiếm sách",
+                      style: CustomText.subText(17, colorTextFiled),
                     ),
                     trailing: const Icon(
                       Icons.cancel,
@@ -65,6 +68,9 @@ class _AllScreenState extends State<AllScreen> {
                       height: 30,
                     ),
                     CategoryInAllScreen(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     MostListenWidget(),
                     SliderWidget(),
                   ],
