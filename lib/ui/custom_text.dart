@@ -11,6 +11,16 @@ class CustomText {
         fontWeight: FontWeight.w800);
   }
 
+  static TextStyle titleLetter(double size, Color color, double letterSpacing) {
+    return TextStyle(
+        fontFamily: 'SVNGilroy',
+        fontSize: size,
+        color: color,
+        letterSpacing: letterSpacing,
+        height: 1.3,
+        fontWeight: FontWeight.w800);
+  }
+
   static TextStyle subText(double size, Color color) {
     return TextStyle(
         fontFamily: 'SVNGilroy',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/views/details/detail_book_screen.dart';
 
@@ -7,13 +8,17 @@ import '../../../../../ui/custom_text.dart';
 
 class ItemAllScreen extends StatelessWidget {
   final Books books;
-  const ItemAllScreen({super.key, required this.books});
+  final int index;
+  const ItemAllScreen({super.key, required this.books, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.read<BookProvider>();
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const DetailBookScreen())),
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => DetailBookScreen(
+                books: provider.listBooks[index],
+              ))),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: SizedBox(

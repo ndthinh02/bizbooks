@@ -30,7 +30,10 @@ class Suggested extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: value.listBooks.length,
                 itemBuilder: (context, index) {
-                  return ItemAllScreen(books: value.listBooks[index]);
+                  return ItemAllScreen(
+                    books: value.listBooks[index],
+                    index: index,
+                  );
                 },
               ),
             );

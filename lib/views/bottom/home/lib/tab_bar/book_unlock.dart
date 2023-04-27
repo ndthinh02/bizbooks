@@ -34,7 +34,10 @@ class _BookUnlockScreenState extends State<BookUnlockScreen> {
                     itemCount: value.listBooks.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return ItemAllScreen(books: value.listBooks[index]);
+                      return ItemAllScreen(
+                        books: value.listBooks[index],
+                        index: index,
+                      );
                     },
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

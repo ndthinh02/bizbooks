@@ -17,12 +17,12 @@ ElevatedButton styleElevatedButton(String title) {
       style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-              side: const BorderSide(color: colorTextRegister),
+              side: const BorderSide(color: colorTextRegister, width: 2),
               borderRadius: BorderRadius.circular(24))),
       onPressed: () {},
       child: Text(
         title,
-        style: CustomText.title(15, colorTextRegister),
+        style: CustomText.titleLetter(15, colorTextBlueDart, 0.25),
       ));
 }
 
@@ -37,7 +37,7 @@ ElevatedButton elevatedButtonIcon(String title, Color clor) {
     icon: const Icon(Icons.play_circle_fill_outlined),
     label: Text(
       title,
-      style: CustomText.title(15, Colors.white),
+      style: CustomText.titleLetter(15, Colors.white, 0),
     ),
   );
 }
@@ -81,17 +81,20 @@ Container container(
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 checkIsButton == true
                     ? SizedBox(
                         width: widthButton,
-                        height: heightButton,
+                        height: 45,
                         child: styleElevatedButton(textElevatedButton),
                       )
-                    : Text(
-                        titleText,
-                        style: CustomText.title(15, colorSuccessDark),
+                    : Container(
+                        margin: const EdgeInsets.only(left: 40),
+                        child: Text(
+                          titleText,
+                          style: CustomText.title(15, colorSuccessDark),
+                        ),
                       ),
                 SizedBox(
                   width: width,
