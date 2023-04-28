@@ -53,7 +53,7 @@ class _ItemCategoryState extends State<ItemCategory> {
                   children: [
                     CircleAvatar(
                       backgroundColor: widget.category.selectedIndex == true
-                          ? colorBackgroundTextFiled
+                          ? colorGrayScale
                           : colorScafold,
                       radius: 45,
                       child: CircleAvatar(
@@ -81,7 +81,7 @@ class _ItemCategoryState extends State<ItemCategory> {
                           textAlign: TextAlign.center,
                           style: widget.category.selectedIndex == true
                               ? CustomText.title(13, colorButton)
-                              : CustomText.title(13, colorTextFiled),
+                              : CustomText.title(13, colorGrayScaleLabel),
                         ))
                   ],
                 ),
@@ -112,7 +112,7 @@ class _ItemCategoryState extends State<ItemCategory> {
                           softWrap: true,
                           maxLines: 2,
                           textAlign: TextAlign.center,
-                          style: CustomText.title(13, colorTextFiled),
+                          style: CustomText.title(13, colorGrayScaleLabel),
                         ))
                   ],
                 ),

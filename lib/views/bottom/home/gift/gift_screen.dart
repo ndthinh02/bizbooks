@@ -62,7 +62,8 @@ class _AllScreenState extends State<GiftScreen> {
                               ),
                               Text(
                                 'Mở khóa sách để nhận quà tặng',
-                                style: CustomText.subText(12, colorTextFiled),
+                                style:
+                                    CustomText.subText(12, colorGrayScaleLabel),
                               ),
                               const SizedBox(
                                 height: 20,
@@ -76,10 +77,10 @@ class _AllScreenState extends State<GiftScreen> {
                                           Image.asset("images/image_arrow.png"),
                                       hintText: "Nhập mã quà tặng",
                                       hintStyle: CustomText.subTextLigth(
-                                          13, colorTextFiled),
+                                          13, colorGrayScaleLabel),
                                       border: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                              color: colorTextFiled),
+                                              color: colorGrayScaleLabel),
                                           borderRadius:
                                               BorderRadius.circular(8.32))),
                                 ),

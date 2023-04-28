@@ -54,7 +54,7 @@ class _IntroduceWidgetState extends State<IntroduceWidget> {
             ),
           ),
           const SizedBox(
-            height: 14,
+            height: 10,
           ),
           Container(
             margin: const EdgeInsets.only(left: 14),
@@ -74,7 +74,7 @@ class _IntroduceWidgetState extends State<IntroduceWidget> {
                     text: introduceBook,
                     style: const TextStyle(
                         fontFamily: 'SVNGilroy',
-                        color: colorTextFiled,
+                        color: colorGrayScaleLabel,
                         fontSize: 13,
                         height: 2,
                         letterSpacing: 0.75,
@@ -111,6 +111,9 @@ class _IntroduceWidgetState extends State<IntroduceWidget> {
                 Text(
                   "Nội dung tương tự",
                   style: CustomText.title(20, Colors.black),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 Consumer<BookProvider>(
                   builder: (context, value, child) {

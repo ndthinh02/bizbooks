@@ -48,7 +48,7 @@ class ItemAllScreen extends StatelessWidget {
                 ),
                 Text(
                   books.author,
-                  style: CustomText.subTextLigth(15, colorTextFiled),
+                  style: CustomText.subTextLigth(15, colorGrayScaleLabel),
                 )
               ],
             )),

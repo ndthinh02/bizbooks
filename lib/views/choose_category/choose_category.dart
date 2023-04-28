@@ -56,7 +56,7 @@ class _ChooseCategoryState extends State<ChooseCategory> {
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(14),
                     filled: true,
-                    fillColor: colorBackgroundTextFiled,
+                    fillColor: colorGrayScale,
                     prefixIcon: SvgPicture.asset(
                       "images/icon_search.svg",
                       width: 10,
@@ -64,7 +64,7 @@ class _ChooseCategoryState extends State<ChooseCategory> {
                       fit: BoxFit.scaleDown,
                     ),
                     hintText: "Tìm kiếm chủ đề",
-                    hintStyle: CustomText.subText(17, colorTextFiled),
+                    hintStyle: CustomText.subText(17, colorGrayScaleLabel),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none)),

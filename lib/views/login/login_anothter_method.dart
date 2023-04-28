@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
-import 'package:ui_flutter/views/audio_player/player_audio_screen.dart';
 import 'package:ui_flutter/views/login/login.dart';
 import 'package:ui_flutter/views/register/register.dart';
 
@@ -99,14 +98,9 @@ class LoginAnotherMethodScreen extends StatelessWidget {
             ),
           ],
         ),
-        GestureDetector(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const PlayerAudioScreen(),
-          )),
-          child: Text(
-            "Bỏ qua",
-            style: CustomText.subTextLigth(17, Colors.white),
-          ),
+        Text(
+          "Bỏ qua",
+          style: CustomText.subTextLigth(17, Colors.white),
         )
       ],
     );

@@ -36,8 +36,6 @@ class CustomTextFiled extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
-            scrollPadding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom + 15 * 4),
             style: CustomText.subText(16, colorLabalTextFiled),
             controller: textEditingController,
             validator: funtionValidator,
@@ -52,9 +50,9 @@ class CustomTextFiled extends StatelessWidget {
                 errorBorder: outlineInputBorder2,
                 helperText: '',
                 errorStyle: CustomText.styleTextError(13, colorTextError),
-                fillColor: colorBackgroundTextFiled,
+                fillColor: colorGrayScale,
                 hintText: hintText,
-                hintStyle: CustomText.subText(15, colorTextFiled),
+                hintStyle: CustomText.subText(15, colorGrayScaleLabel),
                 border: outlineInputBorder),
           )
         ],
@@ -84,7 +82,7 @@ class CustomSearch {
             fit: BoxFit.scaleDown,
           ),
           filled: true,
-          fillColor: colorBackgroundTextFiled,
+          fillColor: colorGrayScale,
           hintText: title,
           hintStyle: CustomText.subText(17, Colors.black),
           border: OutlineInputBorder(

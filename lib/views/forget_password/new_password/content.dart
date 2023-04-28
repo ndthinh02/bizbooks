@@ -59,7 +59,7 @@ class _ContentState extends State<Content> {
                     decoration: InputDecoration(
                         errorStyle: CustomText.subText(13, colorTextError),
                         filled: true,
-                        fillColor: colorBackgroundTextFiled,
+                        fillColor: colorGrayScale,
                         hintText: 'Mật khẩu',
                         hintStyle: CustomText.subText(15, colorLabalTextFiled),
                         border: outlineInputBorder),
@@ -104,7 +104,7 @@ class _ContentState extends State<Content> {
                     decoration: InputDecoration(
                         errorStyle: CustomText.subText(13, colorTextError),
                         filled: true,
-                        fillColor: colorBackgroundTextFiled,
+                        fillColor: colorGrayScale,
                         hintText: 'Nhập lại mật khẩu',
                         hintStyle: CustomText.subText(15, colorLabalTextFiled),
                         border: outlineInputBorder),

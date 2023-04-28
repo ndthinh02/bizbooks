@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ui_flutter/views/audio_player/player_audio_screen.dart';
+import 'package:ui_flutter/views/audio_player/player_audio.dart';
 import 'package:ui_flutter/views/bottom/profile_screen.dart';
 
+import '../../models/books.dart';
+
 class AudioMainScreen extends StatefulWidget {
-  const AudioMainScreen({super.key});
+  final Books books;
+  const AudioMainScreen({super.key, required this.books});
 
   @override
   State<AudioMainScreen> createState() => _AudioMainScreenState();
 }
 
 class _AudioMainScreenState extends State<AudioMainScreen> {
-  var pages = [
-    const PlayerAudioScreen(),
-    const ProfileScreen(),
-  ];
   int _selectedIndex = 0;
   void _onTapItem(int index) {
     setState(() {
@@ -22,42 +21,15 @@ class _AudioMainScreenState extends State<AudioMainScreen> {
     });
   }
 
-  showBottomSheet() {
-    Container _buildBottomSheet(BuildContext context) {
-      return Container(
-        height: 300,
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue, width: 2.0),
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: ListView(
-          children: <Widget>[
-            const ListTile(title: Text('Bottom sheet')),
-            const TextField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                icon: Icon(Icons.attach_money),
-                labelText: 'Enter an integer',
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: ElevatedButton.icon(
-                icon: const Icon(Icons.save),
-                label: const Text('Save and close'),
-                onPressed: () => Navigator.pop(context),
-              ),
-            )
-          ],
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      PlayerAudioScreen(
+        books: widget.books,
+      ),
+      const ProfileScreen(),
+    ];
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

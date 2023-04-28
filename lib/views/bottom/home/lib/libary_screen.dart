@@ -61,7 +61,8 @@ class _AllScreenState extends State<LibraryScreen>
                             child: Text(
                               "Trang sách đã đọc trong hôm nay",
                               maxLines: 2,
-                              style: CustomText.subText(13, colorTextFiled),
+                              style:
+                                  CustomText.subText(13, colorGrayScaleLabel),
                             ),
                           ),
                           const SizedBox(
@@ -77,7 +78,8 @@ class _AllScreenState extends State<LibraryScreen>
                                       borderRadius: BorderRadius.circular(40))),
                               child: Text(
                                 "THAY ĐỔI MỤC TIÊU",
-                                style: CustomText.subText(13, colorTextFiled),
+                                style:
+                                    CustomText.subText(13, colorGrayScaleLabel),
                               ),
                             ),
                           )
@@ -116,7 +118,7 @@ class _AllScreenState extends State<LibraryScreen>
                   margin: const EdgeInsets.all(20),
                   height: 45,
                   decoration: BoxDecoration(
-                    color: colorBackgroundTextFiled,
+                    color: colorGrayScale,
                     borderRadius: BorderRadius.circular(
                       10.0,
                     ),

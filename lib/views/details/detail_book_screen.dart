@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ui_flutter/views/audio_player/audio_main_screen.dart';
+import 'package:ui_flutter/views/details/custom_idicator_tabBar.dart';
+import 'package:ui_flutter/views/details/introduce_widget.dart';
 
 import '../../models/books.dart';
 import '../../ui/color.dart';
 import '../../ui/custom_button.dart';
 import '../../ui/custom_text.dart';
 import 'assess_widget.dart';
-import 'introduce_widget.dart';
 
 class DetailBookScreen extends StatefulWidget {
   final Books books;
@@ -38,6 +39,7 @@ class _DetailBookScreenState extends State<DetailBookScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xFFFFFFFF),
         body: DefaultTabController(
             length: 2,
             child: NestedScrollView(
@@ -54,15 +56,15 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                 children: [
                                   Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: 650,
+                                    height: 630,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             colorFilter: ColorFilter.mode(
-                                              const Color(0xFFe8e8e8)
+                                              const Color(0xFFFCFCFC)
                                                   .withOpacity(0.2),
                                               BlendMode.modulate,
                                             ),
-                                            fit: BoxFit.fitHeight,
+                                            fit: BoxFit.cover,
                                             image: AssetImage(
                                                 widget.books.urlImage))),
                                   ),
@@ -124,79 +126,88 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                         const SizedBox(
                                           height: 30,
                                         ),
-                                        Column(
+                                        Stack(
                                           children: [
-                                            Image.asset(
-                                              widget.books.urlImage,
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                  left: 200, top: 40),
+                                              child: SvgPicture.asset(
+                                                  "images/icon_cd.svg"),
                                             ),
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: List.generate(
-                                                  5,
-                                                  (index) => SvgPicture.asset(
-                                                      "images/icon_star.svg")),
-                                            ),
-                                            const SizedBox(
-                                              height: 8,
-                                            ),
-                                            SizedBox(
-                                              width: 240,
-                                              child: Text(
-                                                widget.books.name,
-                                                textAlign: TextAlign.center,
-                                                maxLines: 2,
-                                                style: CustomText.titleLetter(
-                                                    24, Colors.black, 0),
+                                            Center(
+                                              child: Image.asset(
+                                                widget.books.urlImage,
                                               ),
                                             ),
-                                            const SizedBox(
-                                              height: 8,
-                                            ),
-                                            Text(
-                                              widget.books.author,
-                                              style: CustomText.subText(
-                                                  15, Colors.black),
-                                            ),
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            CustomButton(
-                                              colorBorderSide: colorButton,
-                                              function: () {},
-                                              title: "NGHE AUDIO MIỄN PHÍ",
-                                              colorButton: colorButton,
-                                              radius: 40,
-                                              sizeText: 15,
-                                              colorText: Colors.white,
-                                              icon: const SizedBox(),
-                                              marginHorizontal: 0,
-                                              marginVertical: 8,
-                                              isCheckHaveIcon: false,
-                                            ),
-                                            CustomButton(
-                                              function: () {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const AudioMainScreen()));
-                                              },
-                                              title: "ĐỌC THỬ",
-                                              colorButton: colorTextRegister,
-                                              radius: 40,
-                                              sizeText: 15,
-                                              colorText: Colors.white,
-                                              colorBorderSide:
-                                                  colorTextRegister,
-                                              icon: const SizedBox(),
-                                              marginHorizontal: 0,
-                                              marginVertical: 8,
-                                              isCheckHaveIcon: false,
-                                            ),
                                           ],
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: List.generate(
+                                              5,
+                                              (index) => SvgPicture.asset(
+                                                  "images/icon_star.svg")),
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        SizedBox(
+                                          width: 240,
+                                          child: Text(
+                                            widget.books.name,
+                                            textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            style: CustomText.titleLetter(
+                                                24, Colors.black, 0),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          widget.books.author,
+                                          style: CustomText.subText(
+                                              15, Colors.black),
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        CustomButton(
+                                          colorBorderSide: colorButton,
+                                          function: () {},
+                                          title: "NGHE AUDIO MIỄN PHÍ",
+                                          colorButton: colorButton,
+                                          radius: 40,
+                                          sizeText: 15,
+                                          colorText: Colors.white,
+                                          icon: const SizedBox(),
+                                          marginHorizontal: 0,
+                                          marginVertical: 8,
+                                          isCheckHaveIcon: false,
+                                        ),
+                                        CustomButton(
+                                          function: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AudioMainScreen(
+                                                          books: widget.books,
+                                                        )));
+                                          },
+                                          title: "ĐỌC THỬ",
+                                          colorButton: colorTextRegister,
+                                          radius: 40,
+                                          sizeText: 15,
+                                          colorText: Colors.white,
+                                          colorBorderSide: colorTextRegister,
+                                          icon: const SizedBox(),
+                                          marginHorizontal: 0,
+                                          marginVertical: 8,
+                                          isCheckHaveIcon: false,
                                         ),
                                       ],
                                     ),
@@ -205,30 +216,32 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                               ),
                             ],
                           ),
-                          TabBar(
-                              indicatorSize: TabBarIndicatorSize.tab,
-                              labelPadding:
-                                  const EdgeInsets.fromLTRB(0, 0, 50, 0),
-                              indicatorPadding:
-                                  const EdgeInsets.fromLTRB(0, 0, 50, 0),
-                              indicator: const UnderlineTabIndicator(
-                                  borderSide:
-                                      BorderSide(color: colorButton, width: 3)),
-                              isScrollable: true,
-                              labelColor: Colors.black,
-                              labelStyle: CustomText.title(20, Colors.black),
-                              unselectedLabelColor: colorTextAuthor,
-                              unselectedLabelStyle:
-                                  CustomText.title(20, colorTextAuthor),
-                              controller: _tabController,
-                              tabs: const [
-                                Tab(
-                                  child: Text("Giới thiệu"),
-                                ),
-                                Tab(
-                                  child: Text("Đánh giá"),
-                                ),
-                              ])
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TabBar(
+                                // indicatorSize: TabBarIndicatorSize.tab,
+                                labelPadding:
+                                    const EdgeInsets.fromLTRB(10, 10, 30, 8),
+                                indicatorPadding:
+                                    const EdgeInsets.fromLTRB(10, 10, 30, 0),
+                                indicator: TabBarIndicator(
+                                    color: colorButton, radius: 4),
+                                isScrollable: true,
+                                labelColor: Colors.black,
+                                labelStyle: CustomText.title(20, Colors.black),
+                                unselectedLabelColor: colorTextAuthor,
+                                unselectedLabelStyle:
+                                    CustomText.title(20, colorTextAuthor),
+                                controller: _tabController,
+                                tabs: const [
+                                  Tab(
+                                    child: Text("Giới thiệu"),
+                                  ),
+                                  Tab(
+                                    child: Text("Đánh giá"),
+                                  ),
+                                ]),
+                          )
                         ],
                       ),
                     ),
@@ -236,11 +249,9 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                 ];
               },
               body: Container(
-                child: SafeArea(
-                  child: TabBarView(
-                      controller: _tabController,
-                      children: const [IntroduceWidget(), AssessWidget()]),
-                ),
+                child: TabBarView(
+                    controller: _tabController,
+                    children: const [IntroduceWidget(), AssessWidget()]),
               ),
             )));
   }

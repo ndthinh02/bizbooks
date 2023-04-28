@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/models/books.dart';
 import 'package:ui_flutter/models/category.dart';
-import 'package:ui_flutter/views/choose_category/choose_category.dart';
+import 'package:ui_flutter/views/bottom/home/all/all_screen.dart';
 import 'package:ui_flutter/views/choose_category/choose_category_provider.dart';
 
 void main() {
@@ -30,10 +31,17 @@ class MyApp extends StatelessWidget {
     // SystemChrome.setPreferredOrientations([
     //   DeviceOrientation.portraitUp,
     // ]);
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(),
-        home: const ChooseCategory());
+    return ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: const AllScreen(),
+        builder: (context, child) {
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              theme: ThemeData(),
+              home: child);
+        });
   }
 }

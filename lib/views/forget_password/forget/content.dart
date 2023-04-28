@@ -45,7 +45,7 @@ class _ContentState extends State<Content> {
                     },
                     decoration: InputDecoration(
                         errorStyle: CustomText.subText(13, colorTextError),
-                        fillColor: colorBackgroundTextFiled,
+                        fillColor: colorGrayScale,
                         filled: true,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
@@ -93,7 +93,7 @@ class _ContentState extends State<Content> {
                               decoration: InputDecoration(
                                   errorStyle:
                                       CustomText.subText(13, colorTextError),
-                                  fillColor: colorBackgroundTextFiled,
+                                  fillColor: colorGrayScale,
                                   filled: true,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(16),

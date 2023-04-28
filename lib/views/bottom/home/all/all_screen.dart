@@ -35,16 +35,16 @@ class _AllScreenState extends State<AllScreen> {
                       builder: (context) => const SearchScreen()));
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 0),
                   height: 50,
                   decoration: BoxDecoration(
-                      color: colorBackgroundTextFiled,
+                      color: colorGrayScale,
                       borderRadius: BorderRadius.circular(8)),
                   child: ListTile(
                     leading: SvgPicture.asset("images/icon_search.svg"),
                     title: Text(
                       "Tìm kiếm sách",
-                      style: CustomText.subText(17, colorTextFiled),
+                      style: CustomText.subText(17, colorGrayScaleLabel),
                     ),
                     trailing: const Icon(
                       Icons.cancel,

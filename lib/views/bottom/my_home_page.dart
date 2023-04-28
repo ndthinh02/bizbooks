@@ -35,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Colors.white,
-            unselectedLabelStyle: CustomText.subText(13, colorTextFiled),
-            selectedLabelStyle: CustomText.subText(13, colorTextFiled),
+            unselectedLabelStyle: CustomText.subText(13, colorGrayScaleLabel),
+            selectedLabelStyle: CustomText.subText(13, colorGrayScaleLabel),
             fixedColor: _selectedIndex == 0
                 ? colorButton
                 : _selectedIndex == 1
@@ -54,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset(
                     "images/icon_home.svg",
-                    color: _selectedIndex == 0 ? colorButton : colorTextFiled,
+                    color:
+                        _selectedIndex == 0 ? colorButton : colorGrayScaleLabel,
                   ),
                 ),
               ),
@@ -64,7 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset(
                     "images/icon_search.svg",
-                    color: _selectedIndex == 1 ? colorButton : colorTextFiled,
+                    color:
+                        _selectedIndex == 1 ? colorButton : colorGrayScaleLabel,
                   ),
                 ),
               ),
@@ -74,7 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset(
                     "images/icon_cart.svg",
-                    color: _selectedIndex == 2 ? colorButton : colorTextFiled,
+                    color:
+                        _selectedIndex == 2 ? colorButton : colorGrayScaleLabel,
                   ),
                 ),
               ),
@@ -84,7 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset(
                     "images/icon_person.svg",
-                    color: _selectedIndex == 3 ? colorButton : colorTextFiled,
+                    color:
+                        _selectedIndex == 3 ? colorButton : colorGrayScaleLabel,
                   ),
                 ),
               ),

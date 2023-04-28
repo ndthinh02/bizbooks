@@ -142,7 +142,7 @@ class ExpansionInDetailScreen extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: 'SVNGilroy',
                               fontSize: 15,
-                              color: colorTextFiled,
+                              color: colorGrayScaleLabel,
                               letterSpacing: 0.75,
                               height: 1.2,
                               fontWeight: FontWeight.w400),

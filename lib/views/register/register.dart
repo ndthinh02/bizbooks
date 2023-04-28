@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<RegisterScreen> {
   Widget _buildContent(TextEditingController emailController) {
     return Container(
       margin: const EdgeInsets.only(right: 16),
-      width: 355,
+      width: ScreenUtil().setWidth(355),
       height: 522,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(24)),

@@ -65,13 +65,13 @@ class ItemMostListen extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 20),
                               height: 35,
                               decoration: BoxDecoration(
-                                  color: colorBackgroundTextFiled,
+                                  color: colorGrayScale,
                                   borderRadius: BorderRadius.circular(8)),
                               child: Center(
                                 child: Text(
                                   books.category,
                                   style: CustomText.subTextLigth(
-                                      15, colorTextFiled),
+                                      15, colorGrayScaleLabel),
                                 ),
                               ),
                             ),
