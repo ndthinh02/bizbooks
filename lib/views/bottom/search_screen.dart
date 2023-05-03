@@ -18,6 +18,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
@@ -31,11 +32,14 @@ class _SearchScreenState extends State<SearchScreen> {
               const SizedBox(
                 height: 30,
               ),
-              CustomSearch.customSearch("Tìm kiếm", false, _seacrhController,
-                  () {
-                // readBook.seacrh(_seacrhController.text);
-                // print(_seacrhController.text);
-              }),
+              SizedBox(
+                height: 50,
+                child: CustomSearch.customSearch(
+                    "Tìm kiếm", false, _seacrhController, () {
+                  // readBook.seacrh(_seacrhController.text);
+                  // print(_seacrhController.text);
+                }),
+              ),
               const SizedBox(
                 height: 20,
               ),

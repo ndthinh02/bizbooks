@@ -4,6 +4,7 @@ const colorButton = Color(0xFF3D40C6);
 const colorFacebook = Color(0xFF4666D5);
 const colorTextGmail = Color(0xff4e4a66);
 const colorGrayScaleLabel = Color(0xFF6E7191);
+const colorGrayScalePlaceholder = Color(0xFFA0A3BD);
 const colorTextError = Color(0xFFFF4C4D);
 const colorLabalTextFiled = Color(0xFF262338);
 const colorScafold = Color(0xFFF7F7FC);

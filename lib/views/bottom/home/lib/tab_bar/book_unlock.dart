@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:ui_flutter/models/books.dart';
 import 'package:ui_flutter/ui/custom_text_filed.dart';
 import 'package:ui_flutter/views/bottom/home/all/widget/item.dart';
+import 'package:ui_flutter/views/bottom/search_screen.dart';
 
 class BookUnlockScreen extends StatefulWidget {
   const BookUnlockScreen({super.key});
@@ -16,14 +17,22 @@ class _BookUnlockScreenState extends State<BookUnlockScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         // physics: const NeverScrollableScrollPhysics(),
         child: Container(
           margin: const EdgeInsets.all(20),
           child: Column(
             children: [
-              CustomSearch.customSearch(
-                  'Tìm kiếm sách', false, _seacrhController, () {}),
+              SizedBox(
+                height: 45,
+                child: CustomSearch.customSearch(
+                    'Tìm kiếm sách', false, _seacrhController, () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SearchScreen(),
+                  ));
+                }),
+              ),
               const SizedBox(
                 height: 20,
               ),

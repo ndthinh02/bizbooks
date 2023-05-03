@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: TabBar(
-                    labelPadding: const EdgeInsets.fromLTRB(20, 0, 10, 8),
+                    labelPadding: const EdgeInsets.fromLTRB(20, 0, 10, 12),
                     indicatorPadding: const EdgeInsets.fromLTRB(20, 0, 10, 10),
                     indicator: TabBarIndicator(color: colorButton, radius: 4),
                     isScrollable: true,

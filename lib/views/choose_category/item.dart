@@ -81,7 +81,7 @@ class _ItemCategoryState extends State<ItemCategory> {
                           textAlign: TextAlign.center,
                           style: widget.category.selectedIndex == true
                               ? CustomText.title(13, colorButton)
-                              : CustomText.title(13, colorGrayScaleLabel),
+                              : CustomText.title(13, colorGrayScalePlaceholder),
                         ))
                   ],
                 ),

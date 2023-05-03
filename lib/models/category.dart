@@ -19,8 +19,7 @@ class Category extends ChangeNotifier {
 
 List<Category> mListCategory = [
   Category(
-      name: 'Doanh nhân và doanh nghiệp',
-      svgPicture: "images/category/image_business.svg"),
+      name: 'Doanh nhân', svgPicture: "images/category/image_business.svg"),
   Category(name: 'Tài chính', svgPicture: "images/category/image_finance.svg"),
   Category(
       name: 'Marketing', svgPicture: "images/category/image_marketing.svg"),

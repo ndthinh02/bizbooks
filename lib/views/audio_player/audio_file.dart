@@ -3,10 +3,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_flutter/models/audio.dart';
 import 'package:ui_flutter/ui/color.dart';
+import 'package:ui_flutter/ui/custom_text.dart';
 
 class AudioFile extends StatefulWidget {
   final AudioPlayer advancedPlayer;
-  const AudioFile({super.key, required this.advancedPlayer});
+  final String urlAudio;
+  const AudioFile(
+      {super.key, required this.advancedPlayer, required this.urlAudio});
 
   @override
   State<AudioFile> createState() => _AudioFileState();
@@ -26,7 +29,7 @@ class _AudioFileState extends State<AudioFile> {
     final respone =
         await _dio.get("https://644a3ce2a8370fb32148662e.mockapi.io/audio");
     var listAudio = respone.data as List;
-    print(listAudio);
+
     return listAudio.map((e) => Audio.fromJson(e)).toList();
   }
 
@@ -44,7 +47,7 @@ class _AudioFileState extends State<AudioFile> {
         _position = event;
       });
     });
-    Repository().fetchListAudio();
+    // Repository().fetchListAudio();
     widget.advancedPlayer.setSourceUrl(path);
   }
 
@@ -52,7 +55,7 @@ class _AudioFileState extends State<AudioFile> {
     return IconButton(
         onPressed: () {
           if (!isPlaying) {
-            widget.advancedPlayer.play(UrlSource(path));
+            widget.advancedPlayer.play(UrlSource(widget.urlAudio));
             setState(() {
               isPlaying = true;
             });
@@ -73,18 +76,40 @@ class _AudioFileState extends State<AudioFile> {
 
   @override
   Widget build(BuildContext context) {
-    return SliderTheme(
-        data: const SliderThemeData(trackHeight: 2),
-        child: Slider(
-            activeColor: colorButton,
-            min: 0.0,
-            max: _duration.inSeconds.toDouble(),
-            value: _position.inSeconds.toDouble(),
-            onChanged: (value) {
-              setState(() {
-                changeToSecond(value.toInt());
-                value = value;
-              });
-            }));
+    return Container(
+      height: 20,
+      color: Colors.amber,
+      child: Center(
+        child: Column(
+          children: [
+            // _btnStart(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "0${_position.inMinutes}:${_position.inSeconds % 60 < 10 ? "0${_position.inSeconds % 60}" : _position.inSeconds % 60}",
+                  style: CustomText.subText(13, colorGrayScaleLabel),
+                ),
+                Text(
+                    "0${_duration.inMinutes}:${_duration.inSeconds % 60 < 10 ? "0${_duration.inSeconds % 60}" : _duration.inSeconds % 60}"),
+              ],
+            ),
+            SliderTheme(
+                data: const SliderThemeData(trackHeight: 2),
+                child: Slider(
+                    activeColor: colorButton,
+                    min: 0.0,
+                    max: _duration.inSeconds.toDouble(),
+                    value: _position.inSeconds.toDouble(),
+                    onChanged: (value) {
+                      setState(() {
+                        changeToSecond(value.toInt());
+                        value = value;
+                      });
+                    }))
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -53,6 +53,7 @@ class _ChooseCategoryState extends State<ChooseCategory> {
             SizedBox(
               height: 50,
               child: TextField(
+                style: CustomText.subText(17, colorLabalTextFiled),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(14),
                     filled: true,
@@ -125,7 +126,7 @@ class _ChooseCategoryState extends State<ChooseCategory> {
               sizeText: 20,
               colorText: Colors.white,
               icon: const SizedBox(),
-              marginHorizontal: 50,
+              marginHorizontal: 10,
               marginVertical: 8,
               isCheckHaveIcon: false,
             )

@@ -65,6 +65,7 @@ class CustomSearch {
   static TextField customSearch(String title, bool readOnly,
       TextEditingController textEditingController, Function function) {
     return TextField(
+      style: CustomText.subText(17, colorLabalTextFiled),
       controller: textEditingController,
       readOnly: readOnly,
       onChanged: (value) {
@@ -84,7 +85,7 @@ class CustomSearch {
           filled: true,
           fillColor: colorGrayScale,
           hintText: title,
-          hintStyle: CustomText.subText(17, Colors.black),
+          hintStyle: CustomText.subText(17, colorGrayScaleBOdy),
           border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(8))),

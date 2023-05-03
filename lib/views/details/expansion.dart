@@ -33,7 +33,9 @@ class ExpansionInDetailScreen extends StatelessWidget {
                     ),
       children: [
         container(
-            SvgPicture.asset("images/icon_arrow_down.svg"),
+            SvgPicture.asset(
+              "images/icon_download.svg",
+            ),
             "Đoạn 01: Lời mở đầu",
             "Đọc ebook",
             "Nghe audio",
