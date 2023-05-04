@@ -4,6 +4,8 @@ import 'package:ui_flutter/views/audio_player/player_audio.dart';
 import 'package:ui_flutter/views/bottom/profile_screen.dart';
 
 import '../../models/books.dart';
+import '../../ui/color.dart';
+import '../../ui/custom_text.dart';
 
 class AudioMainScreen extends StatefulWidget {
   final Books books;
@@ -28,26 +30,60 @@ class _AudioMainScreenState extends State<AudioMainScreen> {
         books: widget.books,
       ),
       const ProfileScreen(),
+      const ProfileScreen(),
+      const ProfileScreen(),
     ];
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        unselectedLabelStyle: CustomText.subText(13, colorGrayScaleLabel),
+        selectedLabelStyle: CustomText.subText(13, colorGrayScaleLabel),
+        fixedColor: _selectedIndex == 0
+            ? colorButton
+            : _selectedIndex == 1
+                ? colorButton
+                : _selectedIndex == 2
+                    ? colorButton
+                    : colorButton,
         type: BottomNavigationBarType.fixed,
         onTap: _onTapItem,
         items: [
           BottomNavigationBarItem(
               label: "Mục lục",
-              icon: SvgPicture.asset("images/icon_playlist.svg")),
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  "images/icon_playlist.svg",
+                  color:
+                      _selectedIndex == 0 ? colorButton : colorGrayScaleLabel,
+                ),
+              )),
           BottomNavigationBarItem(
               label: "Hẹn giờ",
-              icon: SvgPicture.asset("images/icon_timer.svg")),
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  "images/icon_timer.svg",
+                  color:
+                      _selectedIndex == 1 ? colorButton : colorGrayScaleLabel,
+                ),
+              )),
           BottomNavigationBarItem(
               label: "Ebook",
-              icon: SvgPicture.asset(
-                "images/icon_book.svg",
-                color: Colors.black,
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  "images/icon_read_book.svg",
+                  color:
+                      _selectedIndex == 2 ? colorButton : colorGrayScaleLabel,
+                ),
               )),
-          const BottomNavigationBarItem(label: "Tốc độ", icon: Text("1.5x")),
+          const BottomNavigationBarItem(
+              label: "Tốc độ",
+              icon: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text("1.5x"),
+              )),
         ],
       ),
       body: pages.elementAt(_selectedIndex),

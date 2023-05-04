@@ -1,9 +1,3 @@
-import 'package:equatable/equatable.dart';
+class AudioEvent {}
 
-abstract class AudioEvents extends Equatable {}
-
-class PlayPlayer extends AudioEvents {
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
+class PlayAudio extends AudioEvent {}

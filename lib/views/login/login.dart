@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       margin: const EdgeInsets.only(right: 20),
       width: 355,
-      height: 522,
+      height: 500,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(24)),
       child: Column(
@@ -159,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           const SizedBox(
-            height: 36,
+            height: 20,
           ),
           GestureDetector(
             onTap: () {
@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
             colorText: Colors.white,
             icon: const SizedBox(),
             marginHorizontal: 20,
-            marginVertical: 50,
+            marginVertical: 30,
             isCheckHaveIcon: false,
           )
         ],

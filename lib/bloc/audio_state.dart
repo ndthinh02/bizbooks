@@ -1,20 +1,6 @@
-import 'package:audioplayers/audioplayers.dart';
-import 'package:equatable/equatable.dart';
+import 'package:just_audio/just_audio.dart';
 
-abstract class AudioState extends Equatable {
-  const AudioState();
-}
-
-class AudioInitial extends AudioState {
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
-
-class PlayPlayerSucces extends AudioState {
+class AudioState {
   AudioPlayer audioPlayer;
-  PlayPlayerSucces({required this.audioPlayer});
-  @override
-  // TODO: implement props
-  List<Object?> get props => [audioPlayer];
+  AudioState({required this.audioPlayer});
 }

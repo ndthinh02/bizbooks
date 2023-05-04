@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_button.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
+import 'package:ui_flutter/views/choose_category/choose_category.dart';
 import 'package:ui_flutter/views/login/login.dart';
 import 'package:ui_flutter/views/register/register.dart';
 
@@ -98,9 +99,16 @@ class LoginAnotherMethodScreen extends StatelessWidget {
             ),
           ],
         ),
-        Text(
-          "Bỏ qua",
-          style: CustomText.subTextLigth(17, Colors.white),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const ChooseCategory(),
+            ));
+          },
+          child: Text(
+            "Bỏ qua",
+            style: CustomText.subTextLigth(17, Colors.white),
+          ),
         )
       ],
     );

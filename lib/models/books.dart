@@ -8,6 +8,7 @@ class Books {
   double rate;
   int views;
   String urlAudio;
+  String id;
   Books(
       {required this.urlImage,
       required this.name,
@@ -15,11 +16,13 @@ class Books {
       required this.category,
       required this.rate,
       required this.views,
-      required this.urlAudio});
+      required this.urlAudio,
+      required this.id});
 }
 
 List<Books> mListBooks = [
   Books(
+    id: '0',
     urlImage: "images/image_book.png",
     category: 'Kinh tế tài chính',
     rate: 4.2,
@@ -30,6 +33,7 @@ List<Books> mListBooks = [
         'https://firebasestorage.googleapis.com/v0/b/fluttershopapp-e5a1f.appspot.com/o/y2mate.com%20-%20Vietsub%20TikTok%20Ki%C3%AAu%20ng%E1%BA%A1o%20%20en.mp3?alt=media&token=0e329ec0-6bfd-42d0-ad24-0916f315aeb9',
   ),
   Books(
+      id: '1',
       urlImage: "images/image_poster1.png",
       name: "Đàn ông sao hỏa đàn bà sao kim",
       author: "Nguyễn Hiển Lê",
@@ -39,6 +43,7 @@ List<Books> mListBooks = [
       urlAudio:
           'https://firebasestorage.googleapis.com/v0/b/fluttershopapp-e5a1f.appspot.com/o/y2mate.com%20-%20Vietsub%20%20pinyin%20Kh%C3%B4ng%20bi%E1%BA%BFt%20ph%E1%BA%A3i%20l%C3%A0m%20sao%20%E4%B8%8D%E7%9F%A5%E6%89%80%E6%8E%AA%20%20V%C6%B0%C6%A1ng%20T%C4%A9nh%20V%C4%83n%20Kh%C3%B4ng%20M%E1%BA%ADp%20%E7%8E%8B%E9%9D%96%E9%9B%AF%E4%B8%8D%E8%83%96%20%20TikTok.mp3?alt=media&token=1b754215-6971-449c-8710-8a025d4a226a'),
   Books(
+      id: '2',
       urlImage: "images/image_poster2.png",
       name: "Happy City In The World",
       author: "Brack Obama",
@@ -48,6 +53,7 @@ List<Books> mListBooks = [
       urlAudio:
           'https://firebasestorage.googleapis.com/v0/b/fluttershopapp-e5a1f.appspot.com/o/y2mate.com%20-%20Dynasty%20Official%20Music%20Video%20%20MIIA.mp3?alt=media&token=dbd02234-e48e-4396-be34-f7e82f4b01dc'),
   Books(
+      id: '3',
       urlImage: "images/image_poster3.png",
       name: "Brack Obama và sự nghiệp",
       author: "Brack Obama",

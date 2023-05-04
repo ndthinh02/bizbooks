@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:ui_flutter/bloc/audio_bloc.dart';
 import 'package:ui_flutter/models/books.dart';
 import 'package:ui_flutter/models/category.dart';
+import 'package:ui_flutter/views/bottom/home/all/all_screen.dart';
 import 'package:ui_flutter/views/choose_category/choose_category_provider.dart';
-import 'package:ui_flutter/views/splash_screen.dart';
 
 Future<void> main() async {
   await JustAudioBackground.init(
@@ -27,7 +27,7 @@ Future<void> main() async {
         create: ((context) => Category(name: '', svgPicture: '')),
       ),
       BlocProvider(
-        create: (context) => AudioBlocs(),
+        create: (context) => AudioBloc(),
       )
     ],
     child: const MyApp(),
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         minTextAdapt: true,
         splitScreenMode: true,
-        child: const SplashScreen(),
+        child: const AllScreen(),
         builder: (context, child) {
           return MaterialApp(
               debugShowCheckedModeBanner: false,

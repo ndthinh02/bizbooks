@@ -61,7 +61,7 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                         image: DecorationImage(
                                             colorFilter: ColorFilter.mode(
                                               const Color(0xFFFCFCFC)
-                                                  .withOpacity(0.2),
+                                                  .withOpacity(0.1),
                                               BlendMode.modulate,
                                             ),
                                             fit: BoxFit.cover,
@@ -178,7 +178,14 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                         ),
                                         CustomButton(
                                           colorBorderSide: colorButton,
-                                          function: () {},
+                                          function: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AudioMainScreen(
+                                                          books: widget.books,
+                                                        )));
+                                          },
                                           title: "NGHE AUDIO MIỄN PHÍ",
                                           colorButton: colorButton,
                                           radius: 40,
@@ -190,14 +197,7 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                           isCheckHaveIcon: false,
                                         ),
                                         CustomButton(
-                                          function: () {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        AudioMainScreen(
-                                                          books: widget.books,
-                                                        )));
-                                          },
+                                          function: () {},
                                           title: "ĐỌC THỬ",
                                           colorButton: colorTextRegister,
                                           radius: 40,
