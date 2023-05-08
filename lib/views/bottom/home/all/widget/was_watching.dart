@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_flutter/ui/color.dart';
 
 import '../../../../../ui/custom_text.dart';
@@ -9,8 +10,8 @@ class WasWatching extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 356,
-      height: 230,
+      width: 351.w,
+      height: 216.h,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(12)),
       child: Padding(
@@ -22,8 +23,9 @@ class WasWatching extends StatelessWidget {
               margin: const EdgeInsets.only(top: 0),
               child: Image.asset(
                 "images/image_book.png",
-                width: 120,
-                height: 200,
+                width: 128.w,
+                height: 192.h,
+                fit: BoxFit.cover,
               ),
             ),
             Container(

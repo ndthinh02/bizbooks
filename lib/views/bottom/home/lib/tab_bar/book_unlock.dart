@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/models/books.dart';
 import 'package:ui_flutter/ui/custom_text_filed.dart';
-import 'package:ui_flutter/views/bottom/home/all/widget/item.dart';
 import 'package:ui_flutter/views/bottom/search_screen.dart';
+
+import 'item_book_unlock.dart';
 
 class BookUnlockScreen extends StatefulWidget {
   const BookUnlockScreen({super.key});
@@ -21,6 +23,7 @@ class _BookUnlockScreenState extends State<BookUnlockScreen> {
       body: SingleChildScrollView(
         // physics: const NeverScrollableScrollPhysics(),
         child: Container(
+          width: double.infinity.w,
           margin: const EdgeInsets.all(20),
           child: Column(
             children: [
@@ -43,7 +46,7 @@ class _BookUnlockScreenState extends State<BookUnlockScreen> {
                     itemCount: value.listBooks.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return ItemAllScreen(
+                      return ItemBookUnlock(
                         books: value.listBooks[index],
                         index: index,
                       );
@@ -51,7 +54,7 @@ class _BookUnlockScreenState extends State<BookUnlockScreen> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio: 0.45,
-                            mainAxisSpacing: 20,
+                            mainAxisSpacing: 60,
                             crossAxisSpacing: 10,
                             crossAxisCount: 3),
                   );

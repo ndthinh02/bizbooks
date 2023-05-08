@@ -8,9 +8,9 @@ xmlns:tools="http://schemas.android.com/tools"
    <application
         android:label="ui_flutter"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
          <activity
-            android:usesCleartextTraffic="true"
             android:name="com.ryanheise.audioservice.AudioServiceActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

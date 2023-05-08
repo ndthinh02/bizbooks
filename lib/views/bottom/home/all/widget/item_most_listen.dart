@@ -25,7 +25,7 @@ class ItemMostListen extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(4),
-                child: Image.asset(
+                child: Image.network(
                   books.urlImage,
                   width: 128,
                   height: 191,

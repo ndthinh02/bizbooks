@@ -9,7 +9,8 @@ import '../../ui/custom_text.dart';
 
 class AudioMainScreen extends StatefulWidget {
   final Books books;
-  const AudioMainScreen({super.key, required this.books});
+  final int index;
+  const AudioMainScreen({super.key, required this.books, required this.index});
 
   @override
   State<AudioMainScreen> createState() => _AudioMainScreenState();
@@ -28,6 +29,7 @@ class _AudioMainScreenState extends State<AudioMainScreen> {
     List pages = [
       PlayerAudioScreen(
         books: widget.books,
+        index: widget.index,
       ),
       const ProfileScreen(),
       const ProfileScreen(),

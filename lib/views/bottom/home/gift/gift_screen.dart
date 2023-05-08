@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/ui/custom_text.dart';
+import 'package:ui_flutter/views/bottom/home/lib/tab_bar/item_book_unlock.dart';
 
 import '../../../../models/books.dart';
-import '../all/widget/item.dart';
 
 class GiftScreen extends StatefulWidget {
   const GiftScreen({super.key});
@@ -101,7 +101,7 @@ class _AllScreenState extends State<GiftScreen> {
                     itemCount: value.listBooks.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return ItemAllScreen(
+                      return ItemBookUnlock(
                         books: value.listBooks[index],
                         index: index,
                       );

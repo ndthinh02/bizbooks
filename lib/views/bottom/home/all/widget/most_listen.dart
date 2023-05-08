@@ -19,7 +19,7 @@ class MostListenWidget extends StatelessWidget {
           style: CustomText.title(22, colorLabalTextFiled),
         ),
         const SizedBox(
-          height: 20,
+          height: 0,
         ),
         Consumer<BookProvider>(
           builder: (context, value, child) {

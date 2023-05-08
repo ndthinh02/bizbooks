@@ -26,9 +26,7 @@ Future<void> main() async {
       ChangeNotifierProvider(
         create: ((context) => Category(name: '', svgPicture: '')),
       ),
-      BlocProvider(
-        create: (context) => AudioBloc(),
-      )
+      BlocProvider(create: (context) => AudioBloc())
     ],
     child: const MyApp(),
   ));
@@ -43,6 +41,7 @@ class MyApp extends StatelessWidget {
     //   DeviceOrientation.portraitUp,
     // ]);
     return ScreenUtilInit(
+        designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
         child: const AllScreen(),

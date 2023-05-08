@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:ui_flutter/ui/color.dart';
 import 'package:ui_flutter/views/details/detail_book_screen.dart';
@@ -7,10 +6,10 @@ import 'package:ui_flutter/views/details/detail_book_screen.dart';
 import '../../../../../models/books.dart';
 import '../../../../../ui/custom_text.dart';
 
-class ItemAllScreen extends StatelessWidget {
+class ItemBookUnlock extends StatelessWidget {
   final Books books;
   final int index;
-  const ItemAllScreen({super.key, required this.books, required this.index});
+  const ItemBookUnlock({super.key, required this.books, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +21,16 @@ class ItemAllScreen extends StatelessWidget {
                 index: index,
               ))),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 2),
         child: SizedBox(
-            width: 128.w,
-            height: 200.h,
+            width: 110,
+            height: 180,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: Image.network(
-                    books.urlImage,
-                    width: 128.w,
-                    height: 192.h,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.network(books.urlImage),
                 ),
                 const SizedBox(
                   height: 14,

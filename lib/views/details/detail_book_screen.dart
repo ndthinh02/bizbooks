@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ui_flutter/views/audio_player/audio_main_screen.dart';
 import 'package:ui_flutter/views/details/custom_idicator_tabBar.dart';
@@ -12,7 +13,8 @@ import 'assess_widget.dart';
 
 class DetailBookScreen extends StatefulWidget {
   final Books books;
-  const DetailBookScreen({super.key, required this.books});
+  final int index;
+  const DetailBookScreen({super.key, required this.books, required this.index});
 
   @override
   State<DetailBookScreen> createState() => _DetailBookScreenState();
@@ -56,16 +58,16 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                 children: [
                                   Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: 630,
+                                    height: 628.h,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             colorFilter: ColorFilter.mode(
                                               const Color(0xFFFCFCFC)
-                                                  .withOpacity(0.1),
+                                                  .withOpacity(0.15),
                                               BlendMode.modulate,
                                             ),
                                             fit: BoxFit.cover,
-                                            image: AssetImage(
+                                            image: NetworkImage(
                                                 widget.books.urlImage))),
                                   ),
                                   Padding(
@@ -135,8 +137,15 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                                   "images/icon_cd.svg"),
                                             ),
                                             Center(
-                                              child: Image.asset(
-                                                widget.books.urlImage,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(4),
+                                                child: Image.network(
+                                                  widget.books.urlImage,
+                                                  fit: BoxFit.cover,
+                                                  width: 129.w,
+                                                  height: 194.h,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -174,7 +183,7 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                               15, Colors.black),
                                         ),
                                         const SizedBox(
-                                          height: 20,
+                                          height: 40,
                                         ),
                                         CustomButton(
                                           colorBorderSide: colorButton,
@@ -184,6 +193,7 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                                                     builder: (context) =>
                                                         AudioMainScreen(
                                                           books: widget.books,
+                                                          index: widget.index,
                                                         )));
                                           },
                                           title: "NGHE AUDIO MIỄN PHÍ",
@@ -221,9 +231,9 @@ class _DetailBookScreenState extends State<DetailBookScreen>
                             child: TabBar(
                                 // indicatorSize: TabBarIndicatorSize.tab,
                                 labelPadding:
-                                    const EdgeInsets.fromLTRB(10, 10, 30, 8),
+                                    const EdgeInsets.fromLTRB(25, 10, 30, 8),
                                 indicatorPadding:
-                                    const EdgeInsets.fromLTRB(10, 10, 30, 0),
+                                    const EdgeInsets.fromLTRB(25, 10, 30, 0),
                                 indicator: TabBarIndicator(
                                     color: colorButton, radius: 4),
                                 isScrollable: true,
